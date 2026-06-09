@@ -1,26 +1,21 @@
 spring:
   application:
     name: backend
-  
   datasource:
-    url: jdbc:postgresql://localhost:5432/restaurant_app
-    username: postgres
-    password: ninjacongxyz9059
-  
+    url: ${DB_URL}
+    username: ${DB_USERNAME}
+    password: ${DB_PASSWORD}
+
   jpa:
     hibernate:
       ddl-auto: update
     show-sql: true
-    properties:
-      hibernate:
-        dialect: org.hibernate.dialect.PostgreSQLDialect
-  
+
 jwt:
-  secret: tmDe/9eVc0GJE1wSP3oqyH8LxuQmNUThqW4pBVlbinY=
+  secret: ${JWT_SECRET}
   expiration: 86400000
 
 cloudinary:
-  cloud-name: dwfcqm6xb
-  api-key: 182668721548126
-  api-secret: FdSaoAq4o5CdHYhhyTQoFb6ZLNk
-
+  cloud-name: ${CLOUDINARY_CLOUD_NAME}
+  api-key: ${CLOUDINARY_API_KEY}
+  api-secret: ${CLOUDINARY_API_SECRET}
