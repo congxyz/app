@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Region?>
+<?import javafx.scene.layout.StackPane?>
+<?import org.kordamp.ikonli.javafx.FontIcon?>
+
+<HBox alignment="CENTER_LEFT" spacing="22" styleClass="user-navbar" xmlns="http://javafx.com/javafx/21"
+      xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.xyzfood.Render.controllers.components.UserNavbarController">
+    <padding><Insets top="18" right="24" bottom="18" left="36"/></padding>
+    <StackPane styleClass="brand-icon">
+        <ImageView fitHeight="31" fitWidth="31" preserveRatio="true" styleClass="brand-logo-image">
+            <image><Image url="@/images/icons/icon.png"/></image>
+        </ImageView>
+    </StackPane>
+    <Label text="XYZ Food" styleClass="side-brand"/>
+    <Region minWidth="300" HBox.hgrow="ALWAYS"/>
+    <Button fx:id="homeButton" text="Trang chủ" onAction="#openHome" styleClass="user-nav-button">
+        <graphic><FontIcon iconColor="#38BDF8" iconLiteral="fas-home" iconSize="16"/></graphic>
+    </Button>
+    <Button fx:id="bookingButton" text="Đặt bàn" onAction="#openBooking" styleClass="user-nav-button">
+        <graphic><FontIcon iconColor="#F59E0B" iconLiteral="fas-calendar-alt" iconSize="16"/></graphic>
+    </Button>
+    <Button fx:id="menuButton" text="Thực đơn" onAction="#openMenu" styleClass="user-nav-button">
+        <graphic><FontIcon iconColor="#FB7185" iconLiteral="fas-utensils" iconSize="16"/></graphic>
+    </Button>
+    <Button fx:id="reservationsButton" text="Đơn của tôi" onAction="#openReservations" styleClass="user-nav-button">
+        <graphic><FontIcon iconColor="#A78BFA" iconLiteral="fas-clipboard-list" iconSize="16"/></graphic>
+    </Button>
+    <Region HBox.hgrow="ALWAYS"/>
+    <Label fx:id="greetingLabel" styleClass="user-greeting"/>
+    <Button text="Đăng xuất" onAction="#logout" styleClass="secondary-button">
+        <graphic><FontIcon iconColor="white" iconLiteral="fas-sign-out-alt" iconSize="16"/></graphic>
+    </Button>
+</HBox>

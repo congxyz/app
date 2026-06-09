@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.TilePane?>
+<?import javafx.scene.layout.VBox?>
+<?import org.kordamp.ikonli.javafx.FontIcon?>
+
+<BorderPane styleClass="app-root" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="com.xyzfood.Render.controllers.customer.CustomerDashboardController">
+    <top><fx:include source="../components/user_navbar.fxml"/></top>
+    <center>
+        <ScrollPane fitToWidth="true" styleClass="main-scroll">
+            <VBox alignment="TOP_CENTER" spacing="42" styleClass="customer-page">
+                <padding><Insets top="100" right="36" bottom="40" left="36"/></padding>
+                <VBox alignment="CENTER" spacing="22">
+                    <StackPane styleClass="hero-logo">
+                        <ImageView fitHeight="82" fitWidth="82" preserveRatio="true" styleClass="hero-logo-image">
+                            <image><Image url="@/images/icons/icon.png"/></image>
+                        </ImageView>
+                    </StackPane>
+                    <Label text="Chào mừng đến XYZ Food!" styleClass="hero-title"/>
+                    <Label text="Nhà hàng ẩm thực Việt Nam đẳng cấp. Đặt bàn và gọi món trước để có trải nghiệm tuyệt vời nhất." styleClass="hero-subtitle"/>
+                    <HBox spacing="18" alignment="CENTER">
+                        <Button text="Đặt bàn ngay" onAction="#openBooking" styleClass="primary-button">
+                            <graphic><FontIcon iconColor="white" iconLiteral="fas-calendar-alt" iconSize="17"/></graphic>
+                        </Button>
+                        <Button text="Xem thực đơn" onAction="#openCart" styleClass="yellow-button">
+                            <graphic><FontIcon iconColor="#17120A" iconLiteral="fas-utensils" iconSize="17"/></graphic>
+                        </Button>
+                    </HBox>
+                </VBox>
+                <VBox spacing="22" maxWidth="980">
+                    <Label text="Món ăn nổi bật" styleClass="section-title">
+                        <graphic><FontIcon iconColor="#FFD91A" iconLiteral="fas-star" iconSize="22"/></graphic>
+                    </Label>
+                    <TilePane fx:id="featuredFoodGrid" prefColumns="3" styleClass="food-grid"/>
+                </VBox>
+            </VBox>
+        </ScrollPane>
+    </center>
+</BorderPane>

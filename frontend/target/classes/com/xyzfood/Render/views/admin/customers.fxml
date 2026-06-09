@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Region?>
+<?import javafx.scene.layout.VBox?>
+<?import org.kordamp.ikonli.javafx.FontIcon?>
+
+<BorderPane styleClass="app-root" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="com.xyzfood.Render.controllers.admin.CustomerManagementController">
+    <left><fx:include source="../components/sidebar.fxml"/></left>
+    <center>
+        <VBox spacing="34" styleClass="page">
+            <padding><Insets top="42" right="36" bottom="30" left="36"/></padding>
+            <HBox alignment="CENTER_LEFT">
+                <HBox styleClass="page-title-row">
+                    <Label styleClass="page-title-icon">
+                        <graphic><FontIcon iconColor="#38BDF8" iconLiteral="fas-users" iconSize="28"/></graphic>
+                    </Label>
+                    <Label text="Quản lý khách hàng" styleClass="page-title"/>
+                </HBox>
+                <Region HBox.hgrow="ALWAYS"/>
+                <TextField fx:id="searchField" promptText="Tìm theo Customer ID..." onAction="#searchCustomer" prefWidth="300" styleClass="input"/>
+            </HBox>
+            <TableView fx:id="customerTable" VBox.vgrow="NEVER" prefHeight="1000" styleClass="data-table"/>
+        </VBox>
+    </center>
+</BorderPane>

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.StackPane?>
+
+<StackPane styleClass="loading-overlay" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1"
+           fx:controller="com.xyzfood.Render.controllers.components.LoadingController">
+    <Label text="Đang xử lý..." styleClass="loading"/>
+</StackPane>
+
