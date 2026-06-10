@@ -2,7 +2,7 @@ package com.xyzfood.Render.config;
 
 
 public final class ApiConfig {
-    public static final String BASE_URL = "http://localhost:8080/api";
+    public static final String BASE_URL = "https://xyz-food.onrender.com/api";
 
     private ApiConfig() {
         
