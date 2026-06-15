@@ -40,6 +40,7 @@ import javafx.animation.KeyFrame;
 import javafx.util.Duration;
 import javafx.animation.Animation;
 import javafx.application.Platform;
+import javafx.scene.control.ScrollPane;
 import com.xyzfood.Render.utils.AppExecutor;
 import com.xyzfood.Render.controllers.components.Cleanable;
 
@@ -139,13 +140,20 @@ public class TableBookingController implements Cleanable {
             @Override public String toString(Food food) { return food == null ? "" : food.getName() + " - " + food.getPriceText(); }
             @Override public Food fromString(String string) { return null; }
         });
-        
+        foodBox.setStyle("-fx-text-fill: white;");
 
         Spinner<Integer> quantitySpinner = new Spinner<>();
         quantitySpinner.setValueFactory(new SpinnerValueFactory.IntegerSpinnerValueFactory(1, 20, 1));
         VBox selectedFoods = new VBox(6);
         selectedFoods.getStyleClass().add("dialog-food-list");
         selectedFoods.getChildren().add(new Label("Chưa có món nào"));
+        ScrollPane foodScroll = new ScrollPane(selectedFoods);
+        foodScroll.setFitToWidth(true);
+        foodScroll.setPrefHeight(40);
+        foodScroll.setMinHeight(40);
+        foodScroll.setMaxHeight(40);
+        foodScroll.setHbarPolicy(ScrollPane.ScrollBarPolicy.NEVER);
+        foodScroll.setVbarPolicy(ScrollPane.ScrollBarPolicy.AS_NEEDED);
         List<FoodOrder> cart = new ArrayList<>();
 
         Button addFood = new Button("Thêm");
@@ -178,7 +186,7 @@ public class TableBookingController implements Cleanable {
                 new Region(),
                 preorderLabel,
                 foodRow,
-                selectedFoods);
+                foodScroll);
         content.setPrefWidth(760);
         dialog.getDialogPane().setContent(content);
 

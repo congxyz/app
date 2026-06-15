@@ -24,16 +24,16 @@
                     <Label text="Thực đơn XYZ Food" styleClass="page-title"/>
                 </HBox>
                 <HBox spacing="10">
-                    <Button text="Tất cả" userData="all" onAction="#searchforCategory" styleClass="user-nav-button user-nav-active"/>
-                    <Button text="Cơm" userData="Cơm" onAction="#searchforCategory" styleClass="user-nav-button user-nav-active"/>
-                    <Button text="Hải sản" userData="Hải sản"  onAction="#searchforCategory" styleClass="user-nav-button user-nav-active"/>
-                    <Button text="Khai vị" userData="khai vị" onAction="#searchforCategory" styleClass="user-nav-button user-nav-active"/>
-                    <Button text="Lẩu" userData="Lẩu" onAction="#searchforCategory" styleClass="user-nav-button user-nav-active"/>
-                    <Button text="Món chính" userData="Món chính" onAction="#searchforCategory" styleClass="user-nav-button user-nav-active"/>
-                    <Button text="Mì - Phở" userData="Mì - Phở" onAction="#searchforCategory" styleClass="user-nav-button user-nav-active"/>
-                    <Button text="Nướng" userData="Nướng" onAction="#searchforCategory" styleClass="user-nav-button user-nav-active"/>
-                    <Button text="Tráng miệng" userData="Tráng miệng" onAction="#searchforCategory" styleClass="user-nav-button user-nav-active"/>
-                    <Button text="Đồ uống" userData="Đồ uống" onAction="#searchforCategory" styleClass="user-nav-button user-nav-active"/>
+                    <Button text="Tất cả" userData="all" onAction="#searchforCategory" styleClass="category-btn"/>
+                    <Button text="Cơm" userData="Cơm" onAction="#searchforCategory" styleClass="category-btn"/>
+                    <Button text="Hải sản" userData="Hải sản"  onAction="#searchforCategory" styleClass="category-btn"/>
+                    <Button text="Khai vị" userData="khai vị" onAction="#searchforCategory" styleClass="category-btn"/>
+                    <Button text="Lẩu" userData="Lẩu" onAction="#searchforCategory" styleClass="category-btn"/>
+                    <Button text="Món chính" userData="Món chính" onAction="#searchforCategory" styleClass="category-btn"/>
+                    <Button text="Mì - Phở" userData="Mì - Phở" onAction="#searchforCategory" styleClass="category-btn"/>
+                    <Button text="Nướng" userData="Nướng" onAction="#searchforCategory" styleClass="category-btn"/>
+                    <Button text="Tráng miệng" userData="Tráng miệng" onAction="#searchforCategory" styleClass="category-btn"/>
+                    <Button text="Đồ uống" userData="Đồ uống" onAction="#searchforCategory" styleClass="category-btn"/>
                         
                 </HBox>
                 <TilePane fx:id="foodGrid" prefColumns="5" styleClass="food-grid"/>

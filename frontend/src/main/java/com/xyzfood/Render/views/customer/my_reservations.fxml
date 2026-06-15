@@ -24,9 +24,6 @@
                         <Label text="Đơn đặt bàn của tôi" styleClass="page-title"/>
                     </HBox>
                     <Region HBox.hgrow="ALWAYS"/>
-                    <Button text="Làm mới" onAction="#refresh" styleClass="secondary-button">
-                        <graphic><FontIcon iconColor="white" iconLiteral="fas-sync-alt" iconSize="15"/></graphic>
-                    </Button>
                 </HBox>
                 <VBox fx:id="reservationsBox" spacing="18"/>
             </VBox>
