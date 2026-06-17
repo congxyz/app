@@ -22,9 +22,6 @@ public final class ApiConfig {
     public static String getFoodsUrl() {
         return BASE_URL + "/general/foods";
     }
-    public static String ReleaseTableUrl() {
-        return BASE_URL + "/general/releaseTable";
-    }
     public static String getAllReservationsUrl() {
         return BASE_URL + "/admin/reservations";
     }

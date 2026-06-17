@@ -48,9 +48,9 @@ public class TableManagementController implements Cleanable {
                 for (int i = 0; i < tables.size(); i++) {
                     Table table = tables.get(i);
                     Button button = new Button("Bàn " + table.getNumber() + "\n" + table.getSeats() + " người\n" + table.getStatusText());
-                    button.setGraphic(IconUtil.create("fas-chair", table.isReserved() ? "#FF1748" : "#00D56F", 20));
+                    button.setGraphic(IconUtil.create("fas-chair","#00D56F", 20));
                     button.setGraphicTextGap(10);
-                    button.getStyleClass().add(table.isReserved() ? "table-reserved" : "table-free");
+                    button.getStyleClass().add("table-free");
                     tableGrid.add(button, i % 5, i / 5);
                 }
             });

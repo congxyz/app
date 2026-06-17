@@ -38,7 +38,7 @@ public class GeneralServiceimpl implements GeneralService {
     @Override
     public List<TableResponse> getAllTables() { 
         return tableRepository.findAll().stream()
-                .map(table -> new TableResponse(table.getNumber(), table.getSeats(), table.getFloor(), table.isReserved()))
+                .map(table -> new TableResponse(table.getNumber(), table.getSeats(), table.getFloor()))
                 .toList();
     }
     @Override
@@ -48,22 +48,9 @@ public class GeneralServiceimpl implements GeneralService {
                 .toList();
     }
     @Override
-    @Transactional
-    public APIResponse ReleaseTable(Integer request){
-        Restaurant_table table = tableRepository.findByNumber(request);
-        if(table == null){
-            return new APIResponse(false,"Không tìm thấy bàn");
-        }
-        else{
-            table.setReserved(false);
-            tableRepository.save(table);
-            return new APIResponse(true,"Bàn đã trống");
-        }
-    }
-    @Override
     public TableResponse getTable(int request) {
         Restaurant_table table = tableRepository.findByNumber(request);
-            return new TableResponse(table.getNumber(),table.getSeats(),table.getFloor(),table.isReserved());
+            return new TableResponse(table.getNumber(),table.getSeats(),table.getFloor());
     }
     @Override
     public boolean checkReservationCode(String request) {
@@ -106,8 +93,6 @@ public class GeneralServiceimpl implements GeneralService {
         }
         else{
             reservation.setStatus(request.getStatus());
-            reservation.getTable().setReserved(false);
-            tableRepository.save(reservation.getTable());
             reservationRepository.save(reservation);
             return new APIResponse(true,"Cập nhật trạng thái thành công"); 
         }

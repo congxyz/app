@@ -4,16 +4,14 @@ public class Table {
     private int number;
     private int seats;
     private int floor;
-    private boolean reserved;
 
     public Table(){
 
     }
-    public Table(int number, int seats, int floor, boolean reserved) {
+    public Table(int number, int seats, int floor) {
         this.number = number;
         this.seats = seats;
-        this.floor = floor;
-        this.reserved = reserved;        
+        this.floor = floor;     
     }
 
     public int getNumber() {
@@ -22,14 +20,6 @@ public class Table {
 
     public int getSeats() {
         return seats;
-    }
-
-    public boolean isReserved() {
-        return reserved;
-    }
-
-    public void setReserved(boolean reserved) {
-        this.reserved = reserved;
     }
     public int getFloor() {
         return floor;
@@ -45,6 +35,6 @@ public class Table {
     }
 
     public String getStatusText() {
-        return reserved ? "ĐÃ ĐẶT" : "TRỐNG";
+        return "TRỐNG";
     }
 }

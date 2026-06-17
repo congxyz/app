@@ -32,11 +32,6 @@ public class GeneralController {
     public List<FoodResponse> getAllFoods() {
         return generalService.getAllFoods();
     }
-
-    @PostMapping("/releaseTable")
-    public APIResponse ReleaseTable(@RequestBody Integer request){
-        return generalService.ReleaseTable(request);
-    }
     @GetMapping("/getTable")
     public TableResponse getTable(@RequestParam int request){
         return generalService.getTable(request);

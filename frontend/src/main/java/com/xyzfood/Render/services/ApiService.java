@@ -254,9 +254,6 @@ public final class ApiService {
 
     public APIResponse createReservation(String reservation_code, String CustomerId, int Tablenumber, LocalDateTime reservationTime, 
         int guestCount, String status, String notes) {
-        if (getTable(Tablenumber).isReserved()) {
-            throw new IllegalArgumentException("Bàn đã có người đặt");
-        }
         if (guestCount < 1 || guestCount > getTable(Tablenumber).getSeats()) {
             throw new IllegalArgumentException("Số người vượt quá sức chứa của bàn");
         }
@@ -354,30 +351,6 @@ public final class ApiService {
                 System.out.println("Lỗi kết nối đến máy chủ: " + e.getMessage());
                 return new APIResponse(false, "Lỗi kết nối đến máy chủ" + e.getMessage());
             }
-    }
-
-    public APIResponse releaseTable(int TableNumber) {
-        try {
-            String json = String.valueOf(TableNumber);
-            HttpRequest request = HttpRequest.newBuilder()
-                    .uri(URI.create(ApiConfig.ReleaseTableUrl()))
-                    .header("Content-Type", "application/json")
-                    .header("Authorization",
-                            "Bearer " + SessionManager.getInstance().getToken())
-                    .POST(HttpRequest.BodyPublishers.ofString(json))
-                    .build();
-            HttpResponse<String> httpResponse = httpClient.send(request, HttpResponse.BodyHandlers.ofString());
-            if (httpResponse.statusCode() == 200) {
-                return OBJECT_MAPPER.readValue(httpResponse.body(), APIResponse.class);
-            } else {
-                System.out.println("Lỗi kết nối đến máy chủ: "+httpResponse.body());
-                return new APIResponse(false,"Lỗi kết nối đến máy chủ ");
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-            System.out.println("Lỗi kết nối đến máy chủ: " + e.getMessage());
-            return new APIResponse(false,"Lỗi kết nối đến máy chủ ");
-        }
     }
 
     public FoodImageUploadResponse uploadFoodImage(File imageFile) {

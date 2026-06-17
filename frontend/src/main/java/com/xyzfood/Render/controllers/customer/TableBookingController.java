@@ -78,9 +78,9 @@ public class TableBookingController implements Cleanable {
                     for (int i = 0; i < tables.size(); i++) {
                         Table table = tables.get(i);
                         Button button = new Button("Bàn " + table.getNumber() + "\n" + table.getSeats() + " người\n" + table.getStatusText());
-                        button.setGraphic(IconUtil.create("fas-chair", table.isReserved() ? "#FF1748" : "#00D56F", 20));
+                        button.setGraphic(IconUtil.create("fas-chair", "#00D56F", 20));
                         button.setGraphicTextGap(10);
-                        button.getStyleClass().add(table.isReserved() ? "table-reserved" : "table-free");
+                        button.getStyleClass().add("table-free");
                         button.setOnAction(event -> openBookingDialog(table));
                         tableGrid.add(button, i % 5, i / 5);}
                     }finally {
@@ -97,10 +97,6 @@ public class TableBookingController implements Cleanable {
     
 
     private void openBookingDialog(Table table) {
-        if (table.isReserved()) {
-            ToastUtil.show("Bàn này đã có người đặt");
-            return;
-        }
 
         Dialog<Boolean> dialog = new Dialog<>();
         dialog.setTitle("Đặt bàn số " + table.getNumber());

@@ -17,7 +17,6 @@ import com.xyzfood.entities.FoodOrder;
 import org.springframework.dao.DataIntegrityViolationException;
 import com.xyzfood.dto.request.FoodOrderRequest;
 import org.springframework.transaction.annotation.Transactional;
-import org.springframework.dao.OptimisticLockingFailureException;
 
 @Service
 public class CustomerServiceimpl implements CustomerService{
@@ -45,17 +44,13 @@ public class CustomerServiceimpl implements CustomerService{
             if (table == null) {
                 return new APIResponse(false,"Bàn không tồn tại");
             }
-            if (table.isReserved()) {
-                return new APIResponse(false,"Bàn đã có người đặt, vui lòng chọn bàn khác");
-            }
-            table.setReserved(true);
-            Reservation reservation = new Reservation(user,table,request.getReservationCode(),request.getguestCount(),request.getreservationTime(),
+            Reservation reservation = new Reservation(user,table,request.getReservationCode(),request.getguestCount(),request.getreservationTime(), request.getreservationTime().toLocalDate(),
                                                   request.getStatus(),request.getNotes());
             reservationRepository.save(reservation);
             return new APIResponse(true,"Đặt bàn thành công");
         }
-        catch (OptimisticLockingFailureException e) {
-            return new APIResponse(false,"Bàn đã có người đặt, vui lòng chọn bàn khác");
+        catch (DataIntegrityViolationException e) {
+            return new APIResponse(false,"Bàn này đã có người đặt trong ngày hôm nay, vui lòng chọn bàn khác");
         }
     }
 

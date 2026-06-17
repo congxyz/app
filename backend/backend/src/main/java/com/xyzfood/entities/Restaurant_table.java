@@ -10,7 +10,7 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
-import jakarta.persistence.Version;
+
 
 @Entity
 @Table(name = "restaurant_tables")
@@ -25,10 +25,6 @@ public class Restaurant_table {
     private int seats;
     @Column(nullable = false)
     private int floor;
-    @Column(nullable = false)
-    private boolean reserved;
-    @Version
-    private int version;
 
     public Restaurant_table() {
     }
@@ -44,9 +40,6 @@ public class Restaurant_table {
     public int getFloor() {
         return floor;
     }
-    public boolean isReserved() {
-        return reserved;
-    }
     public void setId(Long id) {
         this.id = id;
     }
@@ -58,12 +51,6 @@ public class Restaurant_table {
     }
     public void setFloor(int floor) {
         this.floor = floor;
-    }
-    public void setReserved(boolean reserved) {
-        this.reserved = reserved;
-    }
-    public int getVersion() {
-        return version;
     }
     
 }

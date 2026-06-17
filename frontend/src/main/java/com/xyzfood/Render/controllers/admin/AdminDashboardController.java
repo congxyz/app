@@ -21,7 +21,6 @@ import com.xyzfood.Render.controllers.components.Cleanable;
 
 public class AdminDashboardController implements Cleanable {
     @FXML private Label customerCountLabel;
-    @FXML private Label freeTableCountLabel;
     @FXML private Label reservedCountLabel;
     @FXML private Label reservationCountLabel;
     @FXML private Label confirmedChartLabel;
@@ -36,15 +35,12 @@ public class AdminDashboardController implements Cleanable {
         AppExecutor.getExecutor().submit(() -> {
             var adminService = AppConfig.getInstance().getAdminService();
             var reservations = AppConfig.getInstance().getReservationService().getAllReservations();
-            long reserved = adminService.getTables().stream().filter(table -> table.isReserved()).count();
-            long free = adminService.getTables().size() - reserved;
+            long reserved = reservations.size();
             Platform.runLater(() -> {
                 customerCountLabel.setText(String.valueOf(adminService.getCustomers().stream().filter(user -> !user.isAdmin()).count()));
-                freeTableCountLabel.setText(String.valueOf(free));
                 reservedCountLabel.setText(String.valueOf(reserved));
                 reservationCountLabel.setText(String.valueOf(reservations.size()));
                 confirmedChartLabel.setText(String.valueOf(reservations.size()));
-                freeChartLabel.setText(String.valueOf(free));
                 reservationsData.setAll(reservations);
         });});
         addColumn("Mã đặt", "reservationCode");

@@ -18,10 +18,6 @@ public class AdminService {
         return apiService.tables();
     }
 
-    public APIResponse releaseTable(int TableNumber) {
-        return apiService.releaseTable(TableNumber);
-    }
-
     public Table getTable(int Tablenumber) {
         return apiService.getTable(Tablenumber);
     }

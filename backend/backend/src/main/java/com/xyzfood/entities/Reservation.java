@@ -1,5 +1,6 @@
 package com.xyzfood.entities;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.Date;
 
@@ -13,11 +14,19 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
+import jakarta.persistence.UniqueConstraint;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
 @Entity
-@Table(name = "reservations")
+@Table(
+    name = "reservations",
+    uniqueConstraints = {
+    @UniqueConstraint(
+        name = "BookingCheck",
+        columnNames = {"table_id","reservationDate"}
+    )}
+)
 public class Reservation {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -28,6 +37,8 @@ public class Reservation {
     private int guestCount;
     @Column(name = "reservation_time")
     private LocalDateTime reservationTime;
+    @Column(name = "reservationDate")
+    private LocalDate reservationDate;
     @Column(name = "status")
     private String status;
     @Column(name = "notes")
@@ -49,13 +60,14 @@ public class Reservation {
     public Reservation() {
 
     }
-    public Reservation( User user, Restaurant_table table, String reservationCode, int guestCount, LocalDateTime reservationTime,
+    public Reservation( User user, Restaurant_table table, String reservationCode, int guestCount, LocalDateTime reservationTime, LocalDate reservationDate,
                         String status, String notes ) {
             this.user = user;
             this.table =table;
             this.reservationCode = reservationCode;
             this.guestCount = guestCount;
             this.reservationTime = reservationTime;
+            this.reservationDate = reservationDate;
             this.status = status;
             this.notes = notes;
     }
@@ -83,5 +95,4 @@ public class Reservation {
     public String getNotes() {
         return notes;
     }
-    
 }

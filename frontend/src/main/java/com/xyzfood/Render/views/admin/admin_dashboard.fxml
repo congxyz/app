@@ -22,12 +22,6 @@
             </HBox>
             <HBox spacing="28">
                 <HBox styleClass="stat-card" HBox.hgrow="ALWAYS">
-                    <Label styleClass="stat-icon stat-green">
-                        <graphic><FontIcon iconColor="#00D56F" iconLiteral="fas-check-circle" iconSize="32"/></graphic>
-                    </Label>
-                    <VBox><Label fx:id="freeTableCountLabel" styleClass="stat-value text-success"/><Label text="Bàn trống" styleClass="stat-title"/></VBox>
-                </HBox>
-                <HBox styleClass="stat-card" HBox.hgrow="ALWAYS">
                     <Label styleClass="stat-icon stat-pink">
                         <graphic><FontIcon iconColor="#FF1748" iconLiteral="fas-calendar-check" iconSize="32"/></graphic>
                     </Label>
@@ -54,7 +48,6 @@
                     <Region VBox.vgrow="ALWAYS"/>
                     <HBox spacing="14">
                         <VBox spacing="8" HBox.hgrow="ALWAYS"><Label fx:id="confirmedChartLabel" styleClass="chart-number"/><Region styleClass="chart-line-green"/><Label text="ĐÃ XÁC NHẬN" styleClass="chart-label"/></VBox>
-                        <VBox spacing="8" HBox.hgrow="ALWAYS"><Label fx:id="freeChartLabel" styleClass="chart-number"/><Region styleClass="chart-line-blue"/><Label text="BÀN TRỐNG" styleClass="chart-label"/></VBox>
                         <VBox spacing="8" HBox.hgrow="ALWAYS"><Label text="0" styleClass="chart-number"/><Region styleClass="chart-line-pink"/><Label text="BÀN BẬN" styleClass="chart-label"/></VBox>
                     </HBox>
                 </VBox>

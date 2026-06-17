@@ -11,7 +11,6 @@ import com.xyzfood.dto.request.ReservationStatusRequest;
 public interface GeneralService {
     List<TableResponse> getAllTables();
     List<FoodResponse> getAllFoods();
-    APIResponse ReleaseTable(Integer request);
     TableResponse getTable(int request);
     boolean checkReservationCode(String request);
     List<ReservationResponse> reservationforCustomerId(String request);
