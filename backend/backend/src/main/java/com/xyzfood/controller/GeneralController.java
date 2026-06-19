@@ -73,7 +73,7 @@ public class GeneralController {
         return adminService.saveFood(request);
     }
 
-    @GetMapping("/foods")
+    @GetMapping("/foods/delete")
     public APIResponse deleteFood(@RequestParam String foodName) {
         return adminService.deleteFood(foodName);
     }

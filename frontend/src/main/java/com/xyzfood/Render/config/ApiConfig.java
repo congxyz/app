@@ -53,7 +53,7 @@ public final class ApiConfig {
         return BASE_URL + "/general/foods/save";
     }
     public static String deleteFoodUrl() {
-        return BASE_URL + "/general/foods?foodName=";
+        return BASE_URL + "/general/foods/delete?foodName=";
     }
     public static String getFoodsByCategoryUrl() {
         return BASE_URL + "/general/foodsByCategory?request=";
