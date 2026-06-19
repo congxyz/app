@@ -1,8 +1,11 @@
 package com.xyzfood.controller;
+
+import com.xyzfood.dto.request.FoodRequest;
 import com.xyzfood.dto.response.TableResponse;
 import com.xyzfood.dto.response.FoodResponse;
 import com.xyzfood.dto.response.FoodOrderResponse;
 import com.xyzfood.dto.response.ReservationResponse;
+import com.xyzfood.dto.response.FoodImageUploadResponse;
 import com.xyzfood.dto.request.ReservationStatusRequest;
 import com.xyzfood.service.interfaces.GeneralService;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -11,6 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 import java.util.List;
 import com.xyzfood.dto.response.APIResponse;
 

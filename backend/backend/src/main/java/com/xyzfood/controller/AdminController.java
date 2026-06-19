@@ -1,9 +1,7 @@
 package com.xyzfood.controller;
 
 import javax.annotation.processing.Generated;
-import com.xyzfood.dto.request.FoodRequest;
 import com.xyzfood.dto.response.APIResponse;
-import com.xyzfood.dto.response.FoodImageUploadResponse;
 import com.xyzfood.dto.response.UserResponse;
 import com.xyzfood.dto.response.ReservationResponse;
 import com.xyzfood.service.interfaces.AdminService;
@@ -15,7 +13,6 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.multipart.MultipartFile;
 import org.springframework.security.access.prepost.PreAuthorize;
 
 @RestController
