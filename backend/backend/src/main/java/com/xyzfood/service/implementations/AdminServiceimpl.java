@@ -52,6 +52,7 @@ public class AdminServiceimpl implements AdminService {
                                                                                 reservation.getUser().getFullName(),
                                                                                 reservation.getTable().getNumber(), 
                                                                                 reservation.getReservationTime(),
+                                                                                reservation.getCreatedAt(),
                                                                                 reservation.getguestCount(),
                                                                                 reservation.getStatus(),
                                                                                 reservation.getNotes())).toList();
@@ -93,6 +94,7 @@ public class AdminServiceimpl implements AdminService {
         food.setPrice(request.getPrice());
         food.setCategory(request.getCategory());
         food.setImage_path(request.getImage_path());
+        food.setDelete(request.getDelete());
         foodRepository.save(food);
 
         return new APIResponse(true, isUpdate ? "Cập nhật món ăn thành công" : "Thêm món ăn thành công");
@@ -109,7 +111,8 @@ public class AdminServiceimpl implements AdminService {
         if (food == null) {
             return new APIResponse(false, "Không tìm thấy món ăn");
         }
-            foodRepository.delete(food);
+            food.setDelete(true);
+            foodRepository.save(food);
             return new APIResponse(true, "Xóa món ăn thành công");
        
     }

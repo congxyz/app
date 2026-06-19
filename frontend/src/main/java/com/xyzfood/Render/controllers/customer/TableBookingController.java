@@ -35,46 +35,30 @@ import javafx.scene.layout.Region;
 import javafx.scene.layout.VBox;
 import javafx.scene.layout.GridPane;
 import javafx.util.StringConverter;
-import javafx.animation.Timeline;
-import javafx.animation.KeyFrame;
-import javafx.util.Duration;
-import javafx.animation.Animation;
 import javafx.application.Platform;
 import javafx.scene.control.ScrollPane;
 import com.xyzfood.Render.utils.AppExecutor;
-import com.xyzfood.Render.controllers.components.Cleanable;
+import java.time.LocalDateTime;
 
-public class TableBookingController implements Cleanable {
+public class TableBookingController {
     @FXML private GridPane tableGrid;
 
     private final AdminService adminService = AppConfig.getInstance().getAdminService();
     private final FoodService foodService = AppConfig.getInstance().getFoodService();
     private final ReservationService reservationService = AppConfig.getInstance().getReservationService();
-    private Timeline timeline;
-    private volatile boolean loading = false;
 
     @FXML
     private void initialize() {
         renderTables();
-        timeline = new Timeline(new KeyFrame(Duration.seconds(3), e -> renderTables()));
-        timeline.setCycleCount(Animation.INDEFINITE);
-        timeline.play();
     }
 
-    @FXML
-    private void refresh() {
-        renderTables();
-    }
 
     private void renderTables() {
-        if (loading) return;
-        loading = true;
         tableGrid.getChildren().clear();
         AppExecutor.getExecutor().submit(() -> {
             try{
                 List<Table> tables = adminService.getTables();
                 Platform.runLater(() -> {
-                try {
                     for (int i = 0; i < tables.size(); i++) {
                         Table table = tables.get(i);
                         Button button = new Button("Bàn " + table.getNumber() + "\n" + table.getSeats() + " người\n" + table.getStatusText());
@@ -83,14 +67,10 @@ public class TableBookingController implements Cleanable {
                         button.getStyleClass().add("table-free");
                         button.setOnAction(event -> openBookingDialog(table));
                         tableGrid.add(button, i % 5, i / 5);}
-                    }finally {
-                        loading = false;
-                    }  });
+                    });
                 }
             catch(Exception ex){
                 Platform.runLater(() -> ToastUtil.show("Lỗi khi tải thông tin bàn: " + ex.getMessage()));}
-            finally {
-                loading = false;}
             });
         }
         
@@ -188,6 +168,10 @@ public class TableBookingController implements Cleanable {
 
         dialog.setResultConverter(type -> type == confirmType);
         dialog.showAndWait().filter(Boolean::booleanValue).ifPresent(result -> {
+            if (DateUtil.combine(datePicker.getValue(), timeBox.getValue()).isBefore(LocalDateTime.now())){
+                        ToastUtil.show("Đã qua ngày này,vui lòng chọn lại ngày đặt bàn");
+                        return ;
+            }
             try {
                 AppExecutor.getExecutor().submit(() -> {
                     String reservationCode;
@@ -219,10 +203,4 @@ public class TableBookingController implements Cleanable {
         return box;
     }
 
-    @Override
-    public void clean() {
-        if (timeline != null) {
-            timeline.stop();
-        }
-    }
 }

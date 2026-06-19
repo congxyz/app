@@ -44,6 +44,5 @@ com\xyzfood\Render\models\Food.class
 com\xyzfood\Render\controllers\customer\MyReservationsController.class
 com\xyzfood\Render\models\Table.class
 com\xyzfood\Render\controllers\components\Cleanable.class
-com\xyzfood\Render\controllers\admin\ReservationManagementController$1.class
 com\xyzfood\Render\controllers\customer\CustomerDashboardController.class
 com\xyzfood\Render\controllers\auth\LoginController.class

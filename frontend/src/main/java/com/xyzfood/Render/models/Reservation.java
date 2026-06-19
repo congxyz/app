@@ -18,7 +18,7 @@ public class Reservation {
     private String notes;
     @JsonProperty("CustomerName")
     private String CustomerName;
-
+    private LocalDateTime createdAt;
     public Reservation() {
 
     }
@@ -41,7 +41,7 @@ public class Reservation {
     public LocalDateTime getReservationTime() {
         return reservationTime;
     }
-
+    
     public int getGuestCount() {
         return guestCount;
     }
@@ -67,7 +67,7 @@ public class Reservation {
     }
 
     public LocalDateTime getCreatedAt() {
-        return reservationTime;
+        return createdAt;
     }
     public String getNotes(){
         return notes;
@@ -89,6 +89,9 @@ public class Reservation {
     }
     public void setReservationTime( LocalDateTime reservationTime){
         this.reservationTime = reservationTime;
+    }
+    public void setcreatedAt( LocalDateTime createdAt){
+        this.createdAt = createdAt;
     }
     public void setStatus( String status){
         this.status = status;

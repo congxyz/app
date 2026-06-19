@@ -125,7 +125,7 @@ public class FoodController {
                     Platform.runLater(() -> ToastUtil.show("Vui lòng chọn ảnh món ăn"));
                     return;
                 }
-                Food foodRequest = new Food(foodName, description, category, price, imagePath);
+                Food foodRequest = new Food(foodName, description, category, price, imagePath, false);
                 APIResponse response = AppConfig.getInstance().getFoodService().saveFood(foodRequest);
                     Platform.runLater(() -> {
                         ToastUtil.show(response.getMessage());
@@ -141,7 +141,7 @@ public class FoodController {
                     ToastUtil.show("Vui lòng chọn ảnh món ăn");
                     return;
                 }
-            Food foodRequest = new Food(foodName, description, category, price, imagePath);
+            Food foodRequest = new Food(foodName, description, category, price, imagePath, false);
                 AppExecutor.getExecutor().submit(() -> {
                     APIResponse response = AppConfig.getInstance().getFoodService().saveFood(foodRequest);
                     Platform.runLater(() -> {

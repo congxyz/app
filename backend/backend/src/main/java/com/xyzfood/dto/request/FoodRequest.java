@@ -6,16 +6,17 @@ public class FoodRequest {
     private float price;
     private String image_path;
     private String category;
-
+    private boolean delete;
     public FoodRequest() {
     }
 
-    public FoodRequest(String name, String description, float price, String image_path, String category) {
+    public FoodRequest(String name, String description, float price, String image_path, String category, boolean delete) {
         this.name = name;
         this.description = description;
         this.price = price;
         this.image_path = image_path;
         this.category = category;
+        this.delete = delete;
     }
 
     public String getName() {
@@ -46,6 +47,10 @@ public class FoodRequest {
         return image_path;
     }
 
+    public boolean getDelete() {
+        return delete;
+    }
+
     public void setImage_path(String image_path) {
         this.image_path = image_path;
     }
@@ -56,5 +61,9 @@ public class FoodRequest {
 
     public void setCategory(String category) {
         this.category = category;
+    }
+
+    public void setDelete(boolean delete) {
+        this.delete = delete;
     }
 }

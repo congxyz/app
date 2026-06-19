@@ -86,6 +86,9 @@ public class Reservation {
     public LocalDateTime getReservationTime() {
         return reservationTime;
     }
+    public LocalDateTime getCreatedAt() {
+        return createdAt;
+    }
     public String getStatus() {
         return status;
     }

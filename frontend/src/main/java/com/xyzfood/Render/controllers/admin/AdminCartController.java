@@ -34,7 +34,9 @@ public class AdminCartController {
             List<Food> foods = AppConfig.getInstance().getFoodService().getFoods();
             Platform.runLater(() -> {
                 for (Food food : foods) {
-                    foodGrid.getChildren().add(createFoodCard(food));
+                    if(!food.getDelete()){
+                        foodGrid.getChildren().add(createFoodCard(food));
+                    }
                 }
             });
         });

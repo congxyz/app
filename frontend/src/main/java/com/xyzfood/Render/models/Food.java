@@ -6,15 +6,17 @@ public class Food {
     private float price;
     private String category;
     private String image_path;
+    private boolean delete;
     public Food() {
     }
 
-    public Food(String name, String description, String category , float price, String image_path) {
+    public Food(String name, String description, String category , float price, String image_path, boolean delete) {
         this.name = name;
         this.description = description;
         this.category = category;
         this.price = price;
         this.image_path = image_path;
+        this.delete = delete;
     }
 
     public String getCategory() {
@@ -37,6 +39,10 @@ public class Food {
         return String.format("%,.0f đ", price);
     }
 
+    public boolean getDelete() {
+        return delete;
+    }
+
     public String getImage_path() {
         return image_path;
     }
@@ -55,4 +61,7 @@ public class Food {
     public void setCategory(String category) {
         this.category = category;
     }    
+    public void setDelete(boolean delete) {
+        this.delete = delete;
+    }
 }

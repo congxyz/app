@@ -23,8 +23,7 @@ public class AdminDashboardController implements Cleanable {
     @FXML private Label customerCountLabel;
     @FXML private Label reservedCountLabel;
     @FXML private Label reservationCountLabel;
-    @FXML private Label confirmedChartLabel;
-    @FXML private Label freeChartLabel;
+    @FXML private Label CanceledReservationLabel;
     @FXML private TableView<Reservation> recentTable;
     private final ObservableList<Reservation> reservationsData = FXCollections.observableArrayList();
     private Timeline timeline;
@@ -35,13 +34,13 @@ public class AdminDashboardController implements Cleanable {
         AppExecutor.getExecutor().submit(() -> {
             var adminService = AppConfig.getInstance().getAdminService();
             var reservations = AppConfig.getInstance().getReservationService().getAllReservations();
-            long reserved = reservations.size();
             Platform.runLater(() -> {
                 customerCountLabel.setText(String.valueOf(adminService.getCustomers().stream().filter(user -> !user.isAdmin()).count()));
-                reservedCountLabel.setText(String.valueOf(reserved));
+                reservedCountLabel.setText(String.valueOf(reservations.stream().filter(reservation -> reservation.getStatus().equals("ĐÃ XÁC NHẬN")).count()));
                 reservationCountLabel.setText(String.valueOf(reservations.size()));
-                confirmedChartLabel.setText(String.valueOf(reservations.size()));
+                CanceledReservationLabel.setText(String.valueOf(reservations.stream().filter(reservation -> reservation.getStatus().equals("ĐÃ HUỶ")).count()));
                 reservationsData.setAll(reservations);
+                
         });});
         addColumn("Mã đặt", "reservationCode");
         addColumn("Khách hàng", "customerName");

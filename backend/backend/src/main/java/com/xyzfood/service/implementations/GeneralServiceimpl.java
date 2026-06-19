@@ -44,7 +44,7 @@ public class GeneralServiceimpl implements GeneralService {
     @Override
     public List<FoodResponse> getAllFoods() {
         return foodRepository.findAll().stream()
-                .map(food -> new FoodResponse(food.getName(), food.getDescription(), food.getPrice(), food.getImage_path(), food.getCategory()))
+                .map(food -> new FoodResponse(food.getName(), food.getDescription(), food.getPrice(), food.getImage_path(), food.getCategory(), food.getDelete()))
                 .toList();
     }
     @Override
@@ -67,7 +67,7 @@ public class GeneralServiceimpl implements GeneralService {
             User user = userRepository.findBycustomerId(request);
             return reservationRepository.findByuser(user).stream()
                 .map(reservation -> new ReservationResponse(reservation.getReservationCode(), user.getCustomerId(), 
-                    user.getFullName(), reservation.getTable().getNumber(), reservation.getReservationTime(), reservation.getguestCount(),
+                    user.getFullName(), reservation.getTable().getNumber(), reservation.getReservationTime(), reservation.getCreatedAt(), reservation.getguestCount(),
                     reservation.getStatus(), reservation.getNotes()))
                     .toList();
     }
@@ -100,7 +100,7 @@ public class GeneralServiceimpl implements GeneralService {
     @Override
     public List<FoodResponse> getFoodsByCategory(String request) {
         return foodRepository.findByCategory(request).stream()
-                .map(food -> new FoodResponse(food.getName(), food.getDescription(), food.getPrice(), food.getImage_path(), food.getCategory()))
+                .map(food -> new FoodResponse(food.getName(), food.getDescription(), food.getPrice(), food.getImage_path(), food.getCategory(), food.getDelete()))
                 .toList();
     }
 }

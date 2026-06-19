@@ -30,6 +30,8 @@ public class Food {
     @Column(nullable = false)
     private String category; 
     @Column(nullable = false)
+    private boolean delete; 
+    @Column(nullable = false)
     @CreationTimestamp
     private LocalDateTime created_at;
     @Column(nullable = false)
@@ -76,5 +78,11 @@ public class Food {
     }
     public void setCategory(String category) {
         this.category = category;
+    }
+    public boolean getDelete() {
+        return delete;
+    }
+    public void setDelete (boolean delete) {
+        this.delete = delete;
     }
 }

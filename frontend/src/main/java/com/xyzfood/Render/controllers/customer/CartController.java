@@ -34,7 +34,9 @@ public class CartController {
                 Platform.runLater(() -> {
                     foodGrid.getChildren().clear();
                     for (Food food : foods) {
+                        if(!food.getDelete()){
                         foodGrid.getChildren().add(createFoodCard(food, false));
+                        }
                     }});
         });
     }
@@ -92,7 +94,10 @@ public class CartController {
             Platform.runLater(() -> {
                 foodGrid.getChildren().clear();
                 for (Food food : foods) {
-                    foodGrid.getChildren().add(createFoodCard(food, false));
+                    if(!food.getDelete()){
+                        foodGrid.getChildren().add(createFoodCard(food, false));
+                    }
+                    
                 }
             });
         });

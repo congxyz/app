@@ -9,6 +9,7 @@ import com.xyzfood.Render.utils.ToastUtil;
 import javafx.collections.ObservableList;
 import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
+import javafx.scene.control.TextField;
 import javafx.scene.control.Button;
 import javafx.scene.control.TableCell;
 import javafx.scene.control.TableColumn;
@@ -24,7 +25,7 @@ import com.xyzfood.Render.controllers.components.Cleanable;
 
 public class ReservationManagementController implements Cleanable {
     @FXML private TableView<Reservation> reservationTable;
-    
+    @FXML private TextField searchField;
     private final ObservableList<Reservation> reservationList = FXCollections.observableArrayList();
     private Timeline timeline;
     private volatile boolean loading = false;
@@ -38,7 +39,6 @@ public class ReservationManagementController implements Cleanable {
         addColumn("Khách", "guestCount", 90);
         addColumn("Thời gian", "timeText", 190);
         addColumn("Trạng thái", "status", 160);
-        addActionColumn();
         refresh();
         reservationTable.setItems(reservationList);
         timeline = new Timeline(new KeyFrame(Duration.seconds(3), e -> refresh()));
@@ -62,50 +62,21 @@ public class ReservationManagementController implements Cleanable {
 });
     }
 
+    @FXML
+    private void searchReservation() {
+        String keyword = searchField.getText() == null ? "" : searchField.getText();
+        AppExecutor.getExecutor().submit(() -> {
+            var data = AppConfig.getInstance().getReservationService().getAllReservations().stream()
+                .filter(reservation -> reservation.getTimeText().contains(keyword))
+                .toList();
+            Platform.runLater(() -> reservationTable.setItems(FXCollections.observableArrayList(data)));
+        });
+    }
+
     private void addColumn(String title, String property, double width) {
         TableColumn<Reservation, String> column = new TableColumn<>(title);
         column.setCellValueFactory(new PropertyValueFactory<>(property));
         column.setPrefWidth(width);
-        reservationTable.getColumns().add(column);
-    }
-
-    private void addActionColumn() {
-        TableColumn<Reservation, Void> column = new TableColumn<>("Hành động");
-        column.setPrefWidth(190);
-        column.setCellFactory(col -> new TableCell<>() {
-            private final Button completeButton = new Button("Hoàn thành");
-            {
-                completeButton.setGraphic(IconUtil.create("fas-check-circle", "#34D399", 14));
-                completeButton.setGraphicTextGap(8);
-                completeButton.getStyleClass().add("ghost-button");
-                completeButton.setOnAction(event -> {
-                    Reservation reservation = getTableView().getItems().get(getIndex());
-                    AppExecutor.getExecutor().submit(() -> {
-                        APIResponse APIResponse = AppConfig.getInstance().getReservationService().updateReservationStatus(reservation.getReservationCode(),"ĐÃ HOÀN THÀNH");
-                        Platform.runLater(() -> {
-                            ToastUtil.show(APIResponse.getMessage());
-                            refresh();
-                        });
-                    });
-                });
-            }
-
-            @Override
-            protected void updateItem(Void item, boolean empty) {
-                super.updateItem(item, empty);
-                if (empty || getIndex() < 0 ||
-                    getIndex() >= getTableView().getItems().size()) {
-                    setGraphic(null);
-                    return;
-                }
-                else {
-                    Reservation reservation = getTableView().getItems().get(getIndex());
-                    String status = reservation.getStatus();
-                    boolean isReserved = "ĐÃ XÁC NHẬN".equals(status);
-                    setGraphic(isReserved ? completeButton : null);
-                }
-            }
-        });
         reservationTable.getColumns().add(column);
     }
 

@@ -10,36 +10,19 @@ import com.xyzfood.Render.utils.ToastUtil;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.layout.GridPane;
-import javafx.animation.Timeline;
-import javafx.animation.KeyFrame;
-import javafx.util.Duration;
-import javafx.animation.Animation;
 import javafx.application.Platform;
 import com.xyzfood.Render.utils.AppExecutor;
-import com.xyzfood.Render.controllers.components.Cleanable;
 
-public class TableManagementController implements Cleanable {
+
+public class TableManagementController {
     @FXML private GridPane tableGrid;
 
-    private Timeline timeline;
-    private volatile boolean loading = false;
-
-    @FXML
+    @FXML 
     private void initialize() {
-        renderTables();
-        timeline = new Timeline(new KeyFrame(Duration.seconds(3), e -> renderTables()));
-        timeline.setCycleCount(Animation.INDEFINITE);
-        timeline.play();
-    }
-
-    @FXML
-    private void refresh() {
         renderTables();
     }
 
     private void renderTables() {
-        if (loading) return;
-        loading = true;
         AppExecutor.getExecutor().submit(() -> {
         try {
             var tables = AppConfig.getInstance().getAdminService().getTables();
@@ -57,15 +40,7 @@ public class TableManagementController implements Cleanable {
         } catch (Exception e) {
             Platform.runLater(() -> ToastUtil.show("Lỗi khi tải dữ liệu bàn"));
         }
-        finally {
-            loading = false;
-        }});
-    }
+    });
 
-    @Override
-    public void clean() {
-        if (timeline != null) {
-            timeline.stop();
-        }
     }
 }

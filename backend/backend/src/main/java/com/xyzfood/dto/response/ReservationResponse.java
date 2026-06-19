@@ -10,8 +10,9 @@ public class ReservationResponse {
     private int guestCount;
     private String CustomerName;
     private String notes;
+    private LocalDateTime createdAt;
 
-    public ReservationResponse(String reservationCode, String CustomerId, String CustomerName, int Tablenumber, LocalDateTime reservationTime, int guestCount,String status,String notes) {
+    public ReservationResponse(String reservationCode, String CustomerId, String CustomerName, int Tablenumber, LocalDateTime reservationTime, LocalDateTime createdAt,int guestCount,String status,String notes) {
         this.reservationCode = reservationCode;
         this.CustomerId = CustomerId;
         this.CustomerName = CustomerName;
@@ -20,6 +21,7 @@ public class ReservationResponse {
         this.guestCount = guestCount;
         this.status = status; 
         this.notes = notes;
+        this.createdAt = createdAt;
     }
     public String getReservationCode() {
         return reservationCode;
@@ -38,6 +40,9 @@ public class ReservationResponse {
     }
     public LocalDateTime getReservationTime() {
         return reservationTime;
+    }
+    public LocalDateTime getCreatedAt() {
+        return createdAt;
     }
     public String getStatus() {
         return status;
