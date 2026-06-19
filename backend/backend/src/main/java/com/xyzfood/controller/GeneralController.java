@@ -24,8 +24,10 @@ import com.xyzfood.dto.response.APIResponse;
 @RequestMapping("api/general")
 public class GeneralController {
     private final GeneralService generalService;
-    public GeneralController(GeneralService generalService) {
+    private final AdminService adminService;
+    public GeneralController(GeneralService generalService, AdminService adminService) {
         this.generalService = generalService;
+        this.adminService = adminService;
     }
 
     @GetMapping("/tables")
