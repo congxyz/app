@@ -8,6 +8,7 @@ import com.xyzfood.dto.response.ReservationResponse;
 import com.xyzfood.dto.response.FoodImageUploadResponse;
 import com.xyzfood.dto.request.ReservationStatusRequest;
 import com.xyzfood.service.interfaces.GeneralService;
+import com.xyzfood.service.interfaces.AdminService;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
