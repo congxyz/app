@@ -45,7 +45,7 @@ public class AdminController {
         return adminService.saveFood(request);
     }
 
-    @DeleteMapping("/foods")
+    @GetMapping("/foods")
     public APIResponse deleteFood(@RequestParam String foodName) {
         return adminService.deleteFood(foodName);
     }
