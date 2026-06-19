@@ -33,8 +33,4 @@ public class Table {
     public void setSeats(int seats) {
         this.seats = seats;
     }
-
-    public String getStatusText() {
-        return "TRỐNG";
-    }
 }

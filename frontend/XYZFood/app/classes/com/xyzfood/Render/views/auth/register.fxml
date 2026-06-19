@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Hyperlink?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+<?import org.kordamp.ikonli.javafx.FontIcon?>
+
+<StackPane styleClass="auth-root" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1"
+           fx:controller="com.xyzfood.Render.controllers.auth.RegisterController">
+    <VBox alignment="CENTER" maxWidth="520" spacing="24" styleClass="auth-shell">
+        <VBox alignment="CENTER" spacing="8" styleClass="auth-brand">
+            <StackPane styleClass="auth-logo">
+                <ImageView fitHeight="62" fitWidth="62" preserveRatio="true" styleClass="auth-logo-image">
+                    <image><Image url="@/images/icons/icon.png"/></image>
+                </ImageView>
+            </StackPane>
+            <Label text="XYZ Food" styleClass="auth-brand-title"/>
+            <Label text="Tạo tài khoản mới" styleClass="auth-brand-subtitle"/>
+        </VBox>
+
+        <VBox maxWidth="430" spacing="16" styleClass="auth-card">
+            <padding><Insets top="32" right="34" bottom="30" left="34"/></padding>
+            <Label alignment="CENTER" maxWidth="Infinity" text="Đăng ký" styleClass="auth-card-title"/>
+
+            <VBox styleClass="form-group">
+                <Label text="Họ và tên" styleClass="form-label"/>
+                <TextField fx:id="fullNameField" promptText="Nhập họ và tên" styleClass="input"/>
+            </VBox>
+
+            <VBox styleClass="form-group">
+                <Label text="Tên tài khoản" styleClass="form-label"/>
+                <TextField fx:id="usernameField" promptText="Nhập tên tài khoản" styleClass="input"/>
+            </VBox>
+
+            <VBox styleClass="form-group">
+                <Label text="Mật khẩu" styleClass="form-label"/>
+                <PasswordField fx:id="passwordField" promptText="Ít nhất 6 ký tự" styleClass="input"/>
+            </VBox>
+
+            <VBox styleClass="form-group">
+                <Label text="Nhập lại mật khẩu" styleClass="form-label"/>
+                <PasswordField fx:id="confirmPasswordField" promptText="Xác nhận mật khẩu" styleClass="input"/>
+            </VBox>
+
+            <Button text="Đăng ký" onAction="#handleRegister" maxWidth="Infinity" styleClass="primary-button auth-button auth-register-button" style="-fx-background-color: #ffdd18; -fx-text-fill: #111827; -fx-background-radius: 10;">
+                <graphic><FontIcon iconColor="#111827" iconLiteral="fas-user-plus" iconSize="18"/></graphic>
+            </Button>
+
+            <HBox alignment="CENTER" spacing="4" styleClass="auth-link-row">
+                <Label text="Đã có tài khoản?" styleClass="muted"/>
+                <Hyperlink text="Đăng nhập" onAction="#backToLogin"/>
+            </HBox>
+        </VBox>
+    </VBox>
+</StackPane>

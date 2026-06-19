@@ -22,12 +22,6 @@
             </HBox>
             <HBox spacing="28">
                 <HBox styleClass="stat-card" HBox.hgrow="ALWAYS">
-                    <Label styleClass="stat-icon stat-pink">
-                        <graphic><FontIcon iconColor="#FF1748" iconLiteral="fas-calendar-check" iconSize="32"/></graphic>
-                    </Label>
-                    <VBox><Label fx:id="reservedCountLabel" styleClass="stat-value text-danger"/><Label text="Đã xác nhận" styleClass="stat-title"/></VBox>
-                </HBox>
-                <HBox styleClass="stat-card" HBox.hgrow="ALWAYS">
                     <Label styleClass="stat-icon stat-blue">
                         <graphic><FontIcon iconColor="#1E9BFF" iconLiteral="fas-users" iconSize="32"/></graphic>
                     </Label>

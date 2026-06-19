@@ -61,7 +61,7 @@ public class TableBookingController {
                 Platform.runLater(() -> {
                     for (int i = 0; i < tables.size(); i++) {
                         Table table = tables.get(i);
-                        Button button = new Button("Bàn " + table.getNumber() + "\n" + table.getSeats() + " người\n" + table.getStatusText());
+                        Button button = new Button("Bàn " + table.getNumber() + "\n" + table.getSeats() + " người");
                         button.setGraphic(IconUtil.create("fas-chair", "#00D56F", 20));
                         button.setGraphicTextGap(10);
                         button.getStyleClass().add("table-free");
@@ -106,7 +106,7 @@ public class TableBookingController {
         noteArea.setPrefRowCount(3);
         ComboBox<Food> foodBox = new ComboBox<>();
         AppExecutor.getExecutor().submit(() -> {
-            var foods = foodService.getFoods();
+            var foods = foodService.getFoods().stream().filter(food -> !food.getDelete()).toList();
             Platform.runLater(() -> {
                 foodBox.setItems(FXCollections.observableArrayList(foods));
                 foodBox.getSelectionModel().selectFirst();});

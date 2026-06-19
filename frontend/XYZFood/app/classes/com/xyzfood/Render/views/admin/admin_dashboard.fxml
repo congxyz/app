@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Region?>
+<?import javafx.scene.layout.VBox?>
+<?import org.kordamp.ikonli.javafx.FontIcon?>
+
+<BorderPane styleClass="app-root" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="com.xyzfood.Render.controllers.admin.AdminDashboardController">
+    <left><fx:include source="../components/sidebar.fxml"/></left>
+    <center>
+        <VBox spacing="34" styleClass="page">
+            <padding><Insets top="38" right="36" bottom="30" left="36"/></padding>
+            <HBox styleClass="page-title-row">
+                <Label styleClass="page-title-icon">
+                    <graphic><FontIcon iconColor="#60A5FA" iconLiteral="fas-chart-line" iconSize="28"/></graphic>
+                </Label>
+                <Label text="Dashboard" styleClass="page-title"/>
+            </HBox>
+            <HBox spacing="28">
+                <HBox styleClass="stat-card" HBox.hgrow="ALWAYS">
+                    <Label styleClass="stat-icon stat-blue">
+                        <graphic><FontIcon iconColor="#1E9BFF" iconLiteral="fas-users" iconSize="32"/></graphic>
+                    </Label>
+                    <VBox><Label fx:id="customerCountLabel" styleClass="stat-value text-info"/><Label text="Tổng khách hàng" styleClass="stat-title"/></VBox>
+                </HBox>
+                <HBox styleClass="stat-card" HBox.hgrow="ALWAYS">
+                    <Label styleClass="stat-icon stat-yellow">
+                        <graphic><FontIcon iconColor="#FFD91A" iconLiteral="fas-receipt" iconSize="32"/></graphic>
+                    </Label>
+                    <VBox><Label fx:id="reservationCountLabel" styleClass="stat-value text-warning"/><Label text="Tổng đơn đặt bàn" styleClass="stat-title"/></VBox>
+                </HBox>
+            </HBox>
+            <HBox spacing="28" VBox.vgrow="ALWAYS">
+                <VBox styleClass="admin-card dashboard-chart" spacing="80" HBox.hgrow="ALWAYS">
+                    <Label text="Thống kê đặt bàn" styleClass="section-title">
+                        <graphic><FontIcon iconColor="#34D399" iconLiteral="fas-chart-bar" iconSize="22"/></graphic>
+                    </Label>
+                    <Region VBox.vgrow="ALWAYS"/>
+                    <HBox spacing="14">
+                        <VBox spacing="8" HBox.hgrow="ALWAYS"><Label fx:id="reservedCountLabel" styleClass="chart-number"/><Region styleClass="chart-line-green"/><Label text="ĐÃ XÁC NHẬN" styleClass="chart-label"/></VBox>
+                        <VBox spacing="8" HBox.hgrow="ALWAYS"><Label fx:id="CanceledReservationLabel" styleClass="chart-number"/><Region styleClass="chart-line-pink"/><Label text="ĐÃ HUỶ" styleClass="chart-label"/></VBox>
+                    </HBox>
+                </VBox>
+                <VBox styleClass="admin-card dashboard-chart" spacing="14" HBox.hgrow="ALWAYS">
+                    <Label text="Đặt bàn gần đây" styleClass="section-title">
+                        <graphic><FontIcon iconColor="#A78BFA" iconLiteral="fas-clipboard-list" iconSize="22"/></graphic>
+                    </Label>
+                    <TableView fx:id="recentTable" styleClass="data-table" VBox.vgrow="ALWAYS"/>
+                </VBox>
+            </HBox>
+        </VBox>
+    </center>
+</BorderPane>

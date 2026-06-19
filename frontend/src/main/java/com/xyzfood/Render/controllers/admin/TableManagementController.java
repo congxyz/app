@@ -30,7 +30,7 @@ public class TableManagementController {
                 tableGrid.getChildren().clear();
                 for (int i = 0; i < tables.size(); i++) {
                     Table table = tables.get(i);
-                    Button button = new Button("Bàn " + table.getNumber() + "\n" + table.getSeats() + " người\n" + table.getStatusText());
+                    Button button = new Button("Bàn " + table.getNumber() + "\n" + table.getSeats() + " người");
                     button.setGraphic(IconUtil.create("fas-chair","#00D56F", 20));
                     button.setGraphicTextGap(10);
                     button.getStyleClass().add("table-free");

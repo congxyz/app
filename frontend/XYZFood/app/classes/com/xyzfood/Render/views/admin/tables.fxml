@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Region?>
+<?import javafx.scene.layout.VBox?>
+<?import org.kordamp.ikonli.javafx.FontIcon?>
+
+<BorderPane styleClass="app-root" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="com.xyzfood.Render.controllers.admin.TableManagementController">
+    <left><fx:include source="../components/sidebar.fxml"/></left>
+    <center>
+        <ScrollPane fitToWidth="true" styleClass="page-scroll">
+            <VBox spacing="28" styleClass="page">
+                <padding><Insets top="42" right="36" bottom="30" left="36"/></padding>
+                <HBox alignment="CENTER_LEFT">
+                    <HBox styleClass="page-title-row">
+                        <Label styleClass="page-title-icon">
+                            <graphic><FontIcon iconColor="#34D399" iconLiteral="fas-chair" iconSize="28"/></graphic>
+                        </Label>
+                        <Label text="Quản lý bàn ăn" styleClass="page-title"/>
+                    </HBox>
+                    <Region HBox.hgrow="ALWAYS"/>
+                </HBox>
+                <GridPane fx:id="tableGrid" hgap="26" vgap="28" styleClass="table-grid"/>
+            </VBox>
+        </ScrollPane>
+    </center>
+</BorderPane>

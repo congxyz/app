@@ -14,7 +14,7 @@ public class CustomerDashboardController {
     @FXML
     private void initialize() {
         AppExecutor.getExecutor().submit(() -> {
-            var foods = AppConfig.getInstance().getFoodService().getFoods();
+            var foods = AppConfig.getInstance().getFoodService().getFoods().stream().filter(food -> !food.getDelete()).toList();
             Platform.runLater(() -> {
                 featuredFoodGrid.getChildren().clear();
                 foods.stream()
