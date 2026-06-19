@@ -56,4 +56,18 @@ public class GeneralController {
     public List<FoodResponse> getFoodsByCategory(@RequestParam String request) {
         return generalService.getFoodsByCategory(request);
     }
+    @PostMapping("/foods/upload-image")
+    public FoodImageUploadResponse uploadFoodImage(@RequestParam("image") MultipartFile image) {
+        return adminService.uploadFoodImage(image);
+    }
+
+    @PostMapping("/foods/save")
+    public APIResponse saveFood(@RequestBody FoodRequest request) {
+        return adminService.saveFood(request);
+    }
+
+    @GetMapping("/foods")
+    public APIResponse deleteFood(@RequestParam String foodName) {
+        return adminService.deleteFood(foodName);
+    }
 }

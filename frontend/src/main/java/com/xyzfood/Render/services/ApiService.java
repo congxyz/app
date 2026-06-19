@@ -401,6 +401,8 @@ public final class ApiService {
             if (httpResponse.statusCode() == 200) {
                 return OBJECT_MAPPER.readValue(httpResponse.body(), APIResponse.class);
             }
+            System.out.println("Save food status: " + httpResponse.statusCode());
+            System.out.println("Save food body: " + httpResponse.body());
             return new APIResponse(false, "Lưu món ăn thất bại");
         } catch (Exception e) {
             e.printStackTrace();
@@ -409,6 +411,7 @@ public final class ApiService {
     }
 
     public APIResponse deleteFood(String foodName) {
+        System.out.println(SessionManager.getInstance().getToken());
         try {
             String encodedFoodName = URLEncoder.encode(foodName, StandardCharsets.UTF_8);
             HttpRequest request = HttpRequest.newBuilder()
@@ -422,6 +425,8 @@ public final class ApiService {
             if (httpResponse.statusCode() == 200) {
                 return OBJECT_MAPPER.readValue(httpResponse.body(), APIResponse.class);
             }
+            System.out.println("Status: " + httpResponse.statusCode());
+            System.out.println("Body: " + httpResponse.body());
             return new APIResponse(false, "Xóa món ăn thất bại");
         } catch (Exception e) {
             e.printStackTrace();

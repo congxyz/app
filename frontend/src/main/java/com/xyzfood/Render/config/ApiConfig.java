@@ -47,16 +47,15 @@ public final class ApiConfig {
         return BASE_URL + "/general/updateReservationStatus";
     }  
     public static String uploadFoodImageUrl() {
-        return BASE_URL + "/admin/foods/upload-image";
+        return BASE_URL + "/general/foods/upload-image";
     }
     public static String saveFoodUrl() {
-        return BASE_URL + "/admin/foods/save";
+        return BASE_URL + "/general/foods/save";
     }
     public static String deleteFoodUrl() {
-        return BASE_URL + "/admin/foods?request=";
+        return BASE_URL + "/general/foods?foodName=";
     }
     public static String getFoodsByCategoryUrl() {
         return BASE_URL + "/general/foodsByCategory?request=";
     }
 }
-
