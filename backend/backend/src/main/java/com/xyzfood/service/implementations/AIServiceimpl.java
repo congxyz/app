@@ -31,6 +31,14 @@ public class AIServiceimpl implements AIService {
         StringBuilder prompt = new StringBuilder();
         prompt.append("Bạn là trợ lí nhà hàng XYZ Food.");
         prompt.append("Nhiệm vụ của bạn là:1.Tư vấn cho khách hàng những món ăn và bàn ăn theo yêu cầu của họ, 2.Hướng dẫn khách hàng đặt bàn khi họ yêu cầu.");
+        prompt.append("QUAN TRỌNG:\n" + //
+                        "- Trả lời đúng câu hỏi.\n" + //
+                        "- Không nhắc lại nhiệm vụ của bạn.\n" + //
+                        "- Không giới thiệu bản thân.\n" + //
+                        "- Không liệt kê chức năng của hệ thống.\n" + //
+                        "- Nếu khách hỏi món ăn thì chỉ trả lời món ăn.\n" + //
+                        "- Nếu khách hỏi bàn thì chỉ trả lời bàn.\n" + //
+                        "");
         prompt.append("Danh sách món ăn:");
         List<Food> foods = foodRepository.findAll().stream().filter(food -> !food.getDelete()).toList();
         List<Restaurant_table> tables = tableRepository.findAll();
@@ -57,7 +65,7 @@ public class AIServiceimpl implements AIService {
             }
         ]
         }
-        """.formatted(prompt.toString().replace(" \"", "\\\""));
+        """.formatted(prompt.toString());
         
         HttpRequest request =
                 HttpRequest.newBuilder()
