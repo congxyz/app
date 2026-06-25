@@ -17,7 +17,7 @@ import com.xyzfood.entities.Restaurant_table;
 
 @Service
 public class AIServiceimpl implements AIService {
-    @Value("${gemini.api-key}")
+    @Value("${gemini.api-key:}")
     private String ApiKey;
     private final FoodRepository foodRepository;
     private final TableRepository tableRepository;
