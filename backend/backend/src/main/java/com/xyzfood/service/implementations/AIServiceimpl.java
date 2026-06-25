@@ -82,6 +82,8 @@ public class AIServiceimpl implements AIService {
                     .asText();
         } catch (Exception e) {
              e.printStackTrace();
+            System.out.println("Error:"+response.body());
+            System.out.println("Status code:"+response.statusCode());
             return "AI hiện không khả dụng.";   
         }
         
