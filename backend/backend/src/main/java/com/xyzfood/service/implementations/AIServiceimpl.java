@@ -29,7 +29,9 @@ public class AIServiceimpl implements AIService {
     @Override
     public String ask(String question) {
         StringBuilder prompt = new StringBuilder();
-        prompt.append("Bạn là trợ lí nhà hàng XYZ Food.Danh sách món ăn:");
+        prompt.append("Bạn là trợ lí nhà hàng XYZ Food.");
+        prompt.append("Nhiệm vụ của bạn là:1.Tư vấn cho khách hàng những món ăn và bàn ăn theo yêu cầu của họ, 2.Hướng dẫn khách hàng đặt bàn khi họ yêu cầu.");
+        prompt.append("Danh sách món ăn:");
         List<Food> foods = foodRepository.findAll().stream().filter(food -> !food.getDelete()).toList();
         List<Restaurant_table> tables = tableRepository.findAll();
         for(Food food : foods) {
@@ -68,10 +70,7 @@ public class AIServiceimpl implements AIService {
                 HttpClient.newHttpClient()
                         .send(request,
                             HttpResponse.BodyHandlers.ofString());
-                System.out.println("Error:"+response.body());
-                System.out.println("Status code:"+response.statusCode());
-                            ObjectMapper mapper =
-                new ObjectMapper();
+                            ObjectMapper mapper = new ObjectMapper();
 
             JsonNode root = mapper.readTree(response.body());
 
