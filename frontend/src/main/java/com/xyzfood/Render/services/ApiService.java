@@ -469,7 +469,7 @@ public final class ApiService {
             if (httpResponse.statusCode() == 200) {
                 return httpResponse.body();
             } else {
-                System.out.println("Lỗi kết nối đến máy chủ: "+httpResponse.body());
+                System.out.println("Lỗi kết nối đến máy chủ: "+httpResponse.body()+httpResponse.statusCode());
                 return "Lỗi khi kết nối tới AI";
             }
         } catch (Exception e) {

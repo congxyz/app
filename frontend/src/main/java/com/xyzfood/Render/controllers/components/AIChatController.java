@@ -12,12 +12,9 @@ import com.xyzfood.Render.config.AppConfig;
 
 public class AIChatController {
     
-    @FXML 
-    private VBox chatContainer;
-    @FXML 
-    private TextField messageField;
-    @FXML 
-    private ScrollPane scrollPane;
+    @FXML private VBox chatContainer;
+    @FXML private TextField messageField;
+    @FXML private ScrollPane scrollPane;
 
     private void addUserMessage(String message) {
 

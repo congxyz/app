@@ -10,9 +10,14 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/api/ai")
 public class AIController {
     
+    private final AIService aiservice;
+    public AIController(AIService aiservice) {
+        this.aiservice = aiservice;
+    }
+
     @PostMapping("/ask")
     public String ask(String question) {
-        return ask(question);
+        return aiservice.ask(question);
     }
 
 }

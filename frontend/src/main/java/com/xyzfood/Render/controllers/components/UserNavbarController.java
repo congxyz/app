@@ -32,8 +32,5 @@ public class UserNavbarController {
     @FXML private void openMenu() { App.showCart(); }
     @FXML private void openReservations() { App.showMyReservations(); }
     @FXML private void logout() { App.showLogin(); }
-
-    @FXML public void openChatbot(){
-        
-    }
+    @FXML public void openChatbot(){ App.showChatbot(); }
 }
