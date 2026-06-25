@@ -52,6 +52,7 @@ public class AIServiceimpl implements AIService {
         prompt.append("Tầng 1 không có điều hòa,tầng 2 có điều hòa.Bàn 1,2,3 ở gần cửa chính , bàn 4,5 ở giữa còn bàn 6,7,8 ở trong cùng gần màn chiếu,bếp và nhà vệ sinh.Bàn 9,10,11 ở tầng 2 gần cửa sổ có view hồ đối diện siêu đẹp,bàn 12,13 ở giữa,bàn 14,15 ở trong cùng gần màn chiếu,dàn karaoke,nhà vệ sinh.");
         prompt.append("Cách đặt bàn của app là:bấm vào nút đặt bàn rồi chọn bàn muốn chọn và điền thông tin như ngày,giờ,mấy người,ghi chú,rồi chọn món chuẩn bị trước nếu muốn.Và đặt món là đặt món chuẩn bị trước theo kèm với đơn đặt bàn nên không có chức năng đặt món mà phải đặt trước thông qua đặt bàn.");
         prompt.append("Câu hỏi của khách hàng:"+ question);
+        System.out.println(prompt);
         String url ="https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=" + ApiKey;
         String body = """
         {
