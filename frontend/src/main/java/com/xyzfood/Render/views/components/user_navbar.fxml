@@ -31,6 +31,9 @@
     <Button fx:id="reservationsButton" text="Đơn của tôi" onAction="#openReservations" styleClass="user-nav-button">
         <graphic><FontIcon iconColor="#A78BFA" iconLiteral="fas-clipboard-list" iconSize="16"/></graphic>
     </Button>
+    <Button text="XYZ Food AI" onAction="#openChatbot" styleClass="primary-button">
+                        <graphic><FontIcon iconColor="white" iconLiteral="fas-plus" iconSize="16"/></graphic>
+                    </Button>
     <Region HBox.hgrow="ALWAYS"/>
     <Label fx:id="greetingLabel" styleClass="user-greeting"/>
     <Button text="Đăng xuất" onAction="#logout" styleClass="secondary-button">

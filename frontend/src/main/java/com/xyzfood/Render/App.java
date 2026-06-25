@@ -128,6 +128,10 @@ public class App extends Application {
         }
     }
 
+    public static void showChatbot() {
+        currentView = "Chatbot";
+        setRoot("/com/xyzfood/Render/views/components/AIChatView.fxml");
+    }
 
     private static void setRoot(String fxmlPath) {
         try {

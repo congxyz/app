@@ -144,6 +144,7 @@ public class TableBookingController {
             int quantity = quantitySpinner.getValue();
             cart.add(new FoodOrder(food.getName(), quantity, food.getPrice()*quantity ));
             selectedFoods.getChildren().setAll(cart.stream().map(item -> new Label("• " + item.getDisplayText())).toList());
+            foodScroll.setVvalue(1.0);
         });
 
         HBox row1 = new HBox(24, field("Số người", peopleSpinner), field("Thời gian đặt", new HBox(10, datePicker, timeBox)));

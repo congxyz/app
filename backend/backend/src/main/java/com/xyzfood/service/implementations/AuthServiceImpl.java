@@ -38,7 +38,7 @@ public class AuthServiceImpl implements AuthService {
         Authentication authentication;
         User user = userRepository.findByUsername(request.getUsername());
         try{
-             authentication = authenticationManager.authenticate(
+            authentication = authenticationManager.authenticate(
                 new UsernamePasswordAuthenticationToken(request.getUsername(), request.getPassword())
         );
         } catch (BadCredentialsException e) {
@@ -46,7 +46,6 @@ public class AuthServiceImpl implements AuthService {
         } catch (AuthenticationException e) {
             return new LoginResponse(null ,false,"Tên đăng nhập hoặc mật khẩu không đúng",null);
         }   
-        System.out.println(passwordEncoder.encode("Ninjacongxyz9059"));
         UserDetails userDetails = (UserDetails) authentication.getPrincipal();
         String token = jwtService.generateToken(userDetails);
         return new LoginResponse(new UserResponse(user.getCustomerId(),user.getFullName(),user.getUsername(),user.getRole(),user.getCreatedAt()) , true, "Đăng nhập thành công", token);

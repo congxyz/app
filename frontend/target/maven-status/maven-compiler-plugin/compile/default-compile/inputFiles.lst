@@ -11,6 +11,7 @@ C:\Users\THANH CONG\Desktop\app\frontend\src\main\java\com\xyzfood\Render\servic
 C:\Users\THANH CONG\Desktop\app\frontend\src\main\java\com\xyzfood\Render\dto\Request\ReservationRequest.java
 C:\Users\THANH CONG\Desktop\app\frontend\src\main\java\com\xyzfood\Render\controllers\customer\CartController.java
 C:\Users\THANH CONG\Desktop\app\frontend\src\main\java\com\xyzfood\Render\config\AppConfig.java
+C:\Users\THANH CONG\Desktop\app\frontend\src\main\java\com\xyzfood\Render\services\XYZAIService.java
 C:\Users\THANH CONG\Desktop\app\frontend\src\main\java\com\xyzfood\Render\dto\Request\FoodOrderRequest.java
 C:\Users\THANH CONG\Desktop\app\frontend\src\main\java\com\xyzfood\Render\dto\Response\APIResponse.java
 C:\Users\THANH CONG\Desktop\app\frontend\src\main\java\com\xyzfood\Render\models\Food.java
@@ -34,6 +35,7 @@ C:\Users\THANH CONG\Desktop\app\frontend\src\main\java\com\xyzfood\Render\utils\
 C:\Users\THANH CONG\Desktop\app\frontend\src\main\java\com\xyzfood\Render\utils\ToastUtil.java
 C:\Users\THANH CONG\Desktop\app\frontend\src\main\java\com\xyzfood\Render\services\ApiService.java
 C:\Users\THANH CONG\Desktop\app\frontend\src\main\java\com\xyzfood\Render\config\SessionManager.java
+C:\Users\THANH CONG\Desktop\app\frontend\src\main\java\com\xyzfood\Render\controllers\components\AIChatController.java
 C:\Users\THANH CONG\Desktop\app\frontend\src\main\java\com\xyzfood\Render\dto\Request\RegisterRequest.java
 C:\Users\THANH CONG\Desktop\app\frontend\src\main\java\com\xyzfood\Render\models\FoodOrder.java
 C:\Users\THANH CONG\Desktop\app\frontend\src\main\java\com\xyzfood\Render\controllers\admin\AdminDashboardController.java

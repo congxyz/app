@@ -4,11 +4,9 @@ import com.xyzfood.Render.services.AdminService;
 import com.xyzfood.Render.services.AuthService;
 import com.xyzfood.Render.services.FoodService;
 import com.xyzfood.Render.services.ReservationService;
+import com.xyzfood.Render.services.XYZAIService;
 
-/**
- * Tao va chia se cac service cho toan bo JavaFX app.
- * Cac service dung chung mot ApiService de du lieu tren cac man hinh dong bo.
- */
+
 public final class AppConfig {
     private static final AppConfig INSTANCE = new AppConfig();
 
@@ -16,6 +14,7 @@ public final class AppConfig {
     private final ReservationService reservationService = new ReservationService();
     private final FoodService foodService = new FoodService();
     private final AdminService adminService = new AdminService();
+    private final XYZAIService xyzaiService = new XYZAIService();
 
     private AppConfig() {
     }
@@ -38,6 +37,10 @@ public final class AppConfig {
 
     public AdminService getAdminService() {
         return adminService;
+    }
+
+    public XYZAIService getXYZAIService() {
+        return xyzaiService;
     }
 }
 

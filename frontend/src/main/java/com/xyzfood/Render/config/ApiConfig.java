@@ -58,4 +58,7 @@ public final class ApiConfig {
     public static String getFoodsByCategoryUrl() {
         return BASE_URL + "/general/foodsByCategory?request=";
     }
+    public static String getAIUrl() {
+        return BASE_URL + "/ai/ask";
+    }
 }

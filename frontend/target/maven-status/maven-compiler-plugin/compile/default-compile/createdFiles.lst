@@ -12,6 +12,7 @@ com\xyzfood\Render\services\ApiService.class
 com\xyzfood\Render\controllers\components\UserNavbarController.class
 com\xyzfood\Render\dto\Request\ReservationRequest.class
 com\xyzfood\Render\dto\Request\RegisterRequest.class
+com\xyzfood\Render\services\XYZAIService.class
 com\xyzfood\Render\utils\IconUtil.class
 com\xyzfood\Render\controllers\customer\CartController.class
 com\xyzfood\Render\dto\Request\LoginRequest.class
@@ -26,6 +27,7 @@ com\xyzfood\Render\App.class
 com\xyzfood\Render\models\User$Role.class
 com\xyzfood\Render\controllers\components\LoadingController.class
 com\xyzfood\Render\utils\AnimationUtil.class
+com\xyzfood\Render\controllers\components\AIChatController.class
 com\xyzfood\Render\controllers\auth\RegisterController.class
 com\xyzfood\Render\dto\Response\FoodImageUploadResponse.class
 com\xyzfood\Render\dto\Response\RegisterResponse.class

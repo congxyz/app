@@ -456,4 +456,27 @@ public final class ApiService {
             return new ArrayList<>();
         }
     }
+    public String ask(String question){
+        try {
+            HttpRequest request = HttpRequest.newBuilder()
+                    .uri(URI.create(ApiConfig.getAIUrl()))
+                    .header("Content-Type", "application/json")
+                    .header("Authorization",
+                            "Bearer " + SessionManager.getInstance().getToken())
+                    .POST(HttpRequest.BodyPublishers.ofString(question))
+                    .build();
+            HttpResponse<String> httpResponse = httpClient.send(request, HttpResponse.BodyHandlers.ofString());
+            if (httpResponse.statusCode() == 200) {
+                return httpResponse.body();
+            } else {
+                System.out.println("Lỗi kết nối đến máy chủ: "+httpResponse.body());
+                return "Lỗi khi kết nối tới AI";
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+            System.out.println("Lỗi kết nối đến máy chủ: " + e.getMessage());
+            return "Lỗi khi kết nối tới AI";
+        }
+    
+    }
 }
