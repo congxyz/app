@@ -68,6 +68,8 @@ public class AIServiceimpl implements AIService {
                 HttpClient.newHttpClient()
                         .send(request,
                             HttpResponse.BodyHandlers.ofString());
+                System.out.println("Error:"+response.body());
+                System.out.println("Status code:"+response.statusCode());
                             ObjectMapper mapper =
                 new ObjectMapper();
 
@@ -82,8 +84,6 @@ public class AIServiceimpl implements AIService {
                     .asText();
         } catch (Exception e) {
              e.printStackTrace();
-            System.out.println("Error:"+response.body());
-            System.out.println("Status code:"+response.statusCode());
             return "AI hiện không khả dụng.";   
         }
         
