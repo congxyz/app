@@ -9,6 +9,7 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import com.xyzfood.Render.utils.AppExecutor;
 import com.xyzfood.Render.config.AppConfig;
+import com.xyzfood.Render.App;
 
 public class AIChatController {
     
@@ -71,5 +72,10 @@ public class AIChatController {
             });
 
         });
+    }
+
+    @FXML
+    private void back() {
+        App.showCustomerDashboard();
     }
 }

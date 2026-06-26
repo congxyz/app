@@ -1,5 +1,6 @@
 package com.xyzfood.service.interfaces;
 import com.xyzfood.dto.request.FoodRequest;
+import com.xyzfood.dto.request.TableRequest;
 import com.xyzfood.dto.response.APIResponse;
 import com.xyzfood.dto.response.FoodImageUploadResponse;
 import com.xyzfood.dto.response.UserResponse;
@@ -13,4 +14,5 @@ public interface AdminService {
     FoodImageUploadResponse uploadFoodImage(MultipartFile image);
     APIResponse saveFood(FoodRequest request);
     APIResponse deleteFood(String foodName);
+    APIResponse saveTable(TableRequest request);
 }

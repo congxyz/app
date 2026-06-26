@@ -1,6 +1,7 @@
 package com.xyzfood.service.implementations;
 
 import com.xyzfood.dto.request.FoodRequest;
+import com.xyzfood.dto.request.TableRequest;
 import com.xyzfood.dto.response.APIResponse;
 import com.xyzfood.dto.response.FoodImageUploadResponse;
 import com.xyzfood.dto.response.UserResponse;
@@ -17,6 +18,7 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.transaction.annotation.Transactional;
 import com.xyzfood.entities.Food;
 import com.xyzfood.entities.User;
+import com.xyzfood.entities.Restaurant_table;
 import com.xyzfood.entities.Reservation;
 import com.xyzfood.entities.User.Role;
 
@@ -119,5 +121,16 @@ public class AdminServiceimpl implements AdminService {
 
     private boolean isBlank(String value) {
         return value == null || value.isBlank();
+    }
+
+    @Override
+    @Transactional
+    public APIResponse saveTable(TableRequest request) {
+        Restaurant_table table = new Restaurant_table();
+        table.setNumber(request.getNumber()); 
+        table.setSeats(request.getSeats());
+        table.setFloor(request.getFloor());
+        tableRepository.save(table);
+        return new APIResponse(true,  "Thêm bàn thành công");
     }
 }

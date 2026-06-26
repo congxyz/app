@@ -21,5 +21,9 @@ public class AdminService {
     public Table getTable(int Tablenumber) {
         return apiService.getTable(Tablenumber);
     }
+
+    public APIResponse saveTable(Table table) {
+        return apiService.saveTable(table);
+    }
 }
 

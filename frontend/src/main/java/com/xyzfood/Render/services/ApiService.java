@@ -463,7 +463,7 @@ public final class ApiService {
                     .header("Content-Type", "application/json")
                     .header("Authorization",
                             "Bearer " + SessionManager.getInstance().getToken())
-                    .POST(HttpRequest.BodyPublishers.ofString("\"" + question + "\""))
+                    .POST(HttpRequest.BodyPublishers.ofString(question ))
                     .build();
             HttpResponse<String> httpResponse = httpClient.send(request, HttpResponse.BodyHandlers.ofString());
             if (httpResponse.statusCode() == 200) {
@@ -478,5 +478,25 @@ public final class ApiService {
             return "Lỗi khi kết nối tới AI";
         }
     
+    }
+    public APIResponse saveTable(Table table) {
+        try {
+            String json = OBJECT_MAPPER.writeValueAsString(table);
+            HttpRequest request = HttpRequest.newBuilder()
+                    .uri(URI.create(ApiConfig.saveTableUrl()))
+                    .header("Content-Type", "application/json")
+                    .header("Authorization",
+                            "Bearer " + SessionManager.getInstance().getToken())
+                    .POST(HttpRequest.BodyPublishers.ofString(json))
+                    .build();
+            HttpResponse<String> httpResponse = httpClient.send(request, HttpResponse.BodyHandlers.ofString());
+            if (httpResponse.statusCode() == 200) {
+                return OBJECT_MAPPER.readValue(httpResponse.body(), APIResponse.class);
+            }
+            return new APIResponse(false, "Thêm bàn thất bại");
+        } catch (Exception e) {
+            e.printStackTrace();
+            return new APIResponse(false, "Lỗi thêm bàn: " + e.getMessage());
+        }
     }
 }

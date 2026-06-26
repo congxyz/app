@@ -61,4 +61,7 @@ public final class ApiConfig {
     public static String getAIUrl() {
         return BASE_URL + "/ai/ask";
     }
+    public static String saveTableUrl() {
+        return BASE_URL + "/admin/tables/save";
+    }
 }

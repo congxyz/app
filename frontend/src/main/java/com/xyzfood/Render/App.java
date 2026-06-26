@@ -102,6 +102,11 @@ public class App extends Application {
         setRoot("/com/xyzfood/Render/views/admin/tables.fxml");
     }
 
+    public static void showaddTables() {
+        currentView = "addtable";
+        setRoot("/com/xyzfood/Render/views/admin/add_table.fxml");
+    }
+
     public static void showAdminCart() {
         currentView = "admin-cart";
         setRoot("/com/xyzfood/Render/views/admin/admin_cart.fxml");

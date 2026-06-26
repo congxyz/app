@@ -3,6 +3,7 @@ package com.xyzfood.Render.controllers.admin;
 import java.sql.Time;
 
 import com.xyzfood.Render.config.AppConfig;
+import com.xyzfood.Render.App;
 import com.xyzfood.Render.models.Table;
 import com.xyzfood.Render.utils.IconUtil;
 import com.xyzfood.Render.utils.ToastUtil;
@@ -43,4 +44,10 @@ public class TableManagementController {
     });
 
     }
+
+    @FXML
+    private void addTable() {
+        App.showaddTables();
+    }
+
 }

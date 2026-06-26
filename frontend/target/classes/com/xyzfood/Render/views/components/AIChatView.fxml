@@ -8,6 +8,7 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Priority?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.layout.Region?>
 
 <BorderPane xmlns="http://javafx.com/javafx/21"
             xmlns:fx="http://javafx.com/fxml/1"
@@ -16,37 +17,29 @@
 
     <top>
         <HBox styleClass="header">
-            <Label text="XYZ Food AI Assistant"
-                   styleClass="header-title"/>
+            <Label text="XYZ Food AI Assistant" styleClass="header-title"/>
+
+            <Region HBox.hgrow="ALWAYS"/>
+            
+            <Button text="Quay lại" onAction="#back" styleClass="primary-button"/>
         </HBox>
+
     </top>
 
     <center>
-        <ScrollPane fx:id="scrollPane"
-                    fitToWidth="true"
-                    styleClass="chat-scroll">
+        <ScrollPane fx:id="scrollPane" fitToWidth="true" styleClass="chat-scroll">
 
             <content>
-                <VBox fx:id="chatContainer"
-                      spacing="10"
-                      styleClass="chat-container"/>
+                <VBox fx:id="chatContainer" spacing="10" styleClass="chat-container"/>
             </content>
 
         </ScrollPane>
     </center>
 
     <bottom>
-        <HBox spacing="10"
-              styleClass="input-container">
-
-            <TextField fx:id="messageField"
-                       promptText="Nhập câu hỏi..."
-                       HBox.hgrow="ALWAYS"
-                       styleClass="message-field"/>
-
-            <Button text="➤"
-                    onAction="#sendMessage"
-                    styleClass="send-btn"/>
+        <HBox spacing="10" styleClass="input-container">
+            <TextField fx:id="messageField" promptText="Nhập câu hỏi..." HBox.hgrow="ALWAYS" styleClass="message-field"/>
+            <Button text="➤" onAction="#sendMessage" styleClass="send-btn"/>
         </HBox>
     </bottom>
 
