@@ -463,7 +463,7 @@ public final class ApiService {
                     .header("Content-Type", "application/json")
                     .header("Authorization",
                             "Bearer " + SessionManager.getInstance().getToken())
-                    .POST(HttpRequest.BodyPublishers.ofString(question))
+                    .POST(HttpRequest.BodyPublishers.ofString("\"" + question + "\""))
                     .build();
             HttpResponse<String> httpResponse = httpClient.send(request, HttpResponse.BodyHandlers.ofString());
             if (httpResponse.statusCode() == 200) {

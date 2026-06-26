@@ -50,7 +50,7 @@ public class AIChatController {
     private void sendMessage() {
 
         String question = messageField.getText();
-
+        
         if(question.isBlank()) {
             return;
         }
