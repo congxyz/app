@@ -70,6 +70,7 @@ public class TableManagementController {
         if (result.isPresent() && result.get() == ButtonType.YES) {
             APIResponse ApiResponse = adminservice.deleteTable(tableNumber);
             ToastUtil.show(ApiResponse.getMessage());
+            renderTables();
         } else {
             App.showTables();
         }
