@@ -14,7 +14,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.web.multipart.MultipartFile;
 import com.xyzfood.dto.request.TableRequest;
+import com.xyzfood.dto.request.FoodRequest;
+import com.xyzfood.dto.response.FoodImageUploadResponse;
 
 @RestController
 @RequestMapping("api/admin")
@@ -34,8 +37,24 @@ public class AdminController {
     }
     @PostMapping("/tables/save")
     public APIResponse saveTable(@RequestBody TableRequest request) {
-        System.out.println("VÀO CONTROLLER");
         return adminService.saveTable(request);
+    }
+    @PostMapping("/foods/upload-image")
+    public FoodImageUploadResponse uploadFoodImage(@RequestParam("image") MultipartFile image) {
+        System.out.println("Vào uploadImage controller");
+        return adminService.uploadFoodImage(image);
+    }
+
+    @PostMapping("/foods/save")
+    public APIResponse saveFood(@RequestBody FoodRequest request) {
+        System.out.println("Vào saveFood controller");
+        return adminService.saveFood(request);
+    }
+
+    @GetMapping("/foods/delete")
+    public APIResponse deleteFood(@RequestParam String foodName) {
+        System.out.println("Vào deleteFood controller");
+        return adminService.deleteFood(foodName);
     }
     
 }
