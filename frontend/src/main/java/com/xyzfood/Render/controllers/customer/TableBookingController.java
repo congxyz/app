@@ -57,7 +57,7 @@ public class TableBookingController {
         tableGrid.getChildren().clear();
         AppExecutor.getExecutor().submit(() -> {
             try{
-                List<Table> tables = adminService.getTables();
+                List<Table> tables = adminService.getTables().stream().filter(table -> !table.getDelete()).toList();
                 Platform.runLater(() -> {
                     for (int i = 0; i < tables.size(); i++) {
                         Table table = tables.get(i);

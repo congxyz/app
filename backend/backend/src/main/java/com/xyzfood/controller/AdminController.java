@@ -39,21 +39,22 @@ public class AdminController {
     public APIResponse saveTable(@RequestBody TableRequest request) {
         return adminService.saveTable(request);
     }
+    @GetMapping("/tables/delete")
+    public APIResponse deleteTable(@RequestParam int request) {
+        return adminService.deleteTable(request);
+    }
     @PostMapping("/foods/upload-image")
     public FoodImageUploadResponse uploadFoodImage(@RequestParam("image") MultipartFile image) {
-        System.out.println("Vào uploadImage controller");
         return adminService.uploadFoodImage(image);
     }
 
     @PostMapping("/foods/save")
     public APIResponse saveFood(@RequestBody FoodRequest request) {
-        System.out.println("Vào saveFood controller");
         return adminService.saveFood(request);
     }
 
     @GetMapping("/foods/delete")
     public APIResponse deleteFood(@RequestParam String foodName) {
-        System.out.println("Vào deleteFood controller");
         return adminService.deleteFood(foodName);
     }
     

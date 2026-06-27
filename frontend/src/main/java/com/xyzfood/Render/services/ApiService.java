@@ -411,7 +411,6 @@ public final class ApiService {
     }
 
     public APIResponse deleteFood(String foodName) {
-        System.out.println(SessionManager.getInstance().getToken());
         try {
             String encodedFoodName = URLEncoder.encode(foodName, StandardCharsets.UTF_8);
             HttpRequest request = HttpRequest.newBuilder()
@@ -425,8 +424,6 @@ public final class ApiService {
             if (httpResponse.statusCode() == 200) {
                 return OBJECT_MAPPER.readValue(httpResponse.body(), APIResponse.class);
             }
-            System.out.println("Status: " + httpResponse.statusCode());
-            System.out.println("Body: " + httpResponse.body());
             return new APIResponse(false, "Xóa món ăn thất bại");
         } catch (Exception e) {
             e.printStackTrace();
@@ -497,6 +494,26 @@ public final class ApiService {
         } catch (Exception e) {
             e.printStackTrace();
             return new APIResponse(false, "Lỗi thêm bàn: " + e.getMessage());
+        }
+    }
+    public APIResponse deleteTable(int tableNumber) {
+        try {
+            String encodedFoodName = URLEncoder.encode(foodName, StandardCharsets.UTF_8);
+            HttpRequest request = HttpRequest.newBuilder()
+                    .uri(URI.create(ApiConfig.deleteTableUrl() + tableNumber))
+                    .header("Content-Type", "application/json")
+                    .header("Authorization",
+                            "Bearer " + SessionManager.getInstance().getToken())
+                    .GET()
+                    .build();
+            HttpResponse<String> httpResponse = httpClient.send(request, HttpResponse.BodyHandlers.ofString());
+            if (httpResponse.statusCode() == 200) {
+                return OBJECT_MAPPER.readValue(httpResponse.body(), APIResponse.class);
+            }
+            return new APIResponse(false, "Xóa bàn thất bại");
+        } catch (Exception e) {
+            e.printStackTrace();
+            return new APIResponse(false, "Lỗi xóa bàn: " + e.getMessage());
         }
     }
 }

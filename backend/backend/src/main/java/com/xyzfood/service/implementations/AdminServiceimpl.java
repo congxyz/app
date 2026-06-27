@@ -133,4 +133,18 @@ public class AdminServiceimpl implements AdminService {
         tableRepository.save(table);
         return new APIResponse(true,  "Thêm bàn thành công");
     }
+
+    @Override
+    @Transactional
+    public APIResponse deleteTable(int request) {
+
+        Restaurant_table table = tableRepository.findByNumber(request);
+        if (table == null) {
+            return new APIResponse(false, "Không tìm thấy bàn");
+        }
+            table.setDelete(true);
+            tableRepository.save(table);
+            return new APIResponse(true, "Xóa bàn thành công");
+       
+    }
 }

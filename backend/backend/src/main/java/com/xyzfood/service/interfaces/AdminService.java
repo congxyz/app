@@ -15,4 +15,5 @@ public interface AdminService {
     APIResponse saveFood(FoodRequest request);
     APIResponse deleteFood(String foodName);
     APIResponse saveTable(TableRequest request);
+    APIResponse deleteTable(int request);
 }

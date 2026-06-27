@@ -38,7 +38,7 @@ public class GeneralServiceimpl implements GeneralService {
     @Override
     public List<TableResponse> getAllTables() { 
         return tableRepository.findAll().stream()
-                .map(table -> new TableResponse(table.getNumber(), table.getSeats(), table.getFloor()))
+                .map(table -> new TableResponse(table.getNumber(), table.getSeats(), table.getFloor(), table.getDelete()))
                 .toList();
     }
     @Override
@@ -50,7 +50,7 @@ public class GeneralServiceimpl implements GeneralService {
     @Override
     public TableResponse getTable(int request) {
         Restaurant_table table = tableRepository.findByNumber(request);
-            return new TableResponse(table.getNumber(),table.getSeats(),table.getFloor());
+            return new TableResponse(table.getNumber(),table.getSeats(),table.getFloor(),table.getDelete());
     }
     @Override
     public boolean checkReservationCode(String request) {

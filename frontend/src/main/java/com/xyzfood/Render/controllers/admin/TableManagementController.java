@@ -7,6 +7,7 @@ import com.xyzfood.Render.App;
 import com.xyzfood.Render.models.Table;
 import com.xyzfood.Render.utils.IconUtil;
 import com.xyzfood.Render.utils.ToastUtil;
+import com.xyzfood.Render.services.AdminService;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -18,6 +19,8 @@ import com.xyzfood.Render.utils.AppExecutor;
 public class TableManagementController {
     @FXML private GridPane tableGrid;
 
+    private final AdminService adminservice = AppConfig.getInstance().getAdminService();
+
     @FXML 
     private void initialize() {
         renderTables();
@@ -26,7 +29,7 @@ public class TableManagementController {
     private void renderTables() {
         AppExecutor.getExecutor().submit(() -> {
         try {
-            var tables = AppConfig.getInstance().getAdminService().getTables();
+            var tables = adminservice.getTables().stream().filter(table -> !table.getDelete()).toList();
             Platform.runLater(() -> {
                 tableGrid.getChildren().clear();
                 for (int i = 0; i < tables.size(); i++) {
@@ -35,6 +38,7 @@ public class TableManagementController {
                     button.setGraphic(IconUtil.create("fas-chair","#00D56F", 20));
                     button.setGraphicTextGap(10);
                     button.getStyleClass().add("table-free");
+                    button.setOnAction(event -> showDialog(table.getNumber()));
                     tableGrid.add(button, i % 5, i / 5);
                 }
             });
@@ -48,6 +52,23 @@ public class TableManagementController {
     @FXML
     private void addTable() {
         App.showaddTables();
+    }
+
+    private void showDialog(int tableNumber) {
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+        alert.setTitle("Xác nhận");
+        alert.setHeaderText(null);
+        alert.setContentText("Bạn có chắc chắn muốn xóa?");
+
+        alert.getButtonTypes().setAll(ButtonType.YES, ButtonType.NO);
+
+        Optional<ButtonType> result = alert.showAndWait();
+
+        if (result.isPresent() && result.get() == ButtonType.YES) {
+            return adminservice.deleteTable(tableNumber);
+        } else {
+            app.showTables();
+        }
     }
 
 }

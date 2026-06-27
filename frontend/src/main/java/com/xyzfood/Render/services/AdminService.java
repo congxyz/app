@@ -25,5 +25,9 @@ public class AdminService {
     public APIResponse saveTable(Table table) {
         return apiService.saveTable(table);
     }
+
+    public APIResponse deleteTable(int tableNumber) {
+        return apiService.deleteTable(tableNumber);
+    }
 }
 

@@ -25,6 +25,8 @@ public class Restaurant_table {
     private int seats;
     @Column(nullable = false)
     private int floor;
+    @Column(nullable = false)
+    private boolean delete;
 
     public Restaurant_table() {
     }
@@ -40,6 +42,9 @@ public class Restaurant_table {
     public int getFloor() {
         return floor;
     }
+    public boolean getDelete() {
+        return delete;
+    }
     public void setId(Long id) {
         this.id = id;
     }
@@ -51,6 +56,9 @@ public class Restaurant_table {
     }
     public void setFloor(int floor) {
         this.floor = floor;
+    }
+    public void setDelete(boolean delete) {
+        this.delete = delete;
     }
     
 }

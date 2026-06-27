@@ -64,4 +64,7 @@ public final class ApiConfig {
     public static String saveTableUrl() {
         return BASE_URL + "/admin/tables/save";
     }
+    public static String deleteTableUrl() {
+        return BASE_URL + "/admin/tables/delete?request=";
+    }
 }
