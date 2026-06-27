@@ -21,6 +21,8 @@ import com.xyzfood.entities.User;
 import com.xyzfood.entities.Restaurant_table;
 import com.xyzfood.entities.Reservation;
 import com.xyzfood.entities.User.Role;
+import java.time.LocalDateTime;
+
 
 @Service
 public class AdminServiceimpl implements AdminService {
@@ -126,11 +128,20 @@ public class AdminServiceimpl implements AdminService {
     @Override
     @Transactional
     public APIResponse saveTable(TableRequest request) {
-        Restaurant_table table = new Restaurant_table();
-        table.setNumber(request.getNumber()); 
-        table.setSeats(request.getSeats());
-        table.setFloor(request.getFloor());
-        tableRepository.save(table);
+        Restaurant_table table = tableRepository.findByNumber(request.getNumber());
+
+        if (table != null) {
+            table.setDelete(false);
+            table.setSeats(request.getSeats());
+            table.setFloor(request.getFloor());
+            tableRepository.save(table);
+            return new APIResponse(true, "Thêm bàn thành công"); 
+        }
+        Restaurant_table table1 = new Restaurant_table();
+        table1.setNumber(request.getNumber()); 
+        table1.setSeats(request.getSeats());
+        table1.setFloor(request.getFloor());
+        tableRepository.save(table1);
         return new APIResponse(true,  "Thêm bàn thành công");
     }
 
@@ -142,9 +153,13 @@ public class AdminServiceimpl implements AdminService {
         if (table == null) {
             return new APIResponse(false, "Không tìm thấy bàn");
         }
-            table.setDelete(true);
-            tableRepository.save(table);
-            return new APIResponse(true, "Xóa bàn thành công");
+        List<Reservation> reservations = reservationRepository.findBytable(table).stream().filter(reservation -> reservation.getReservationTime().isAfter(LocalDateTime.now())).toList();
+        if (!reservations.isEmpty()) {
+            return new APIResponse(false, "Xóa bàn không thành công vì có khách đang đặt bàn này");
+        }    
+        table.setDelete(true);
+        tableRepository.save(table);
+        return new APIResponse(true, "Xóa bàn thành công");
        
     }
 }

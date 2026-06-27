@@ -8,13 +8,16 @@ import com.xyzfood.Render.models.Table;
 import com.xyzfood.Render.utils.IconUtil;
 import com.xyzfood.Render.utils.ToastUtil;
 import com.xyzfood.Render.services.AdminService;
+import com.xyzfood.Render.dto.Response.APIResponse;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.layout.GridPane;
 import javafx.application.Platform;
 import com.xyzfood.Render.utils.AppExecutor;
-
+import javafx.scene.control.Alert;
+import javafx.scene.control.ButtonType;
+import java.util.Optional;
 
 public class TableManagementController {
     @FXML private GridPane tableGrid;
@@ -65,9 +68,10 @@ public class TableManagementController {
         Optional<ButtonType> result = alert.showAndWait();
 
         if (result.isPresent() && result.get() == ButtonType.YES) {
-            return adminservice.deleteTable(tableNumber);
+            APIResponse ApiResponse = adminservice.deleteTable(tableNumber);
+            ToastUtil.show(ApiResponse.getMessage());
         } else {
-            app.showTables();
+            App.showTables();
         }
     }
 

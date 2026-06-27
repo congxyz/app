@@ -498,7 +498,6 @@ public final class ApiService {
     }
     public APIResponse deleteTable(int tableNumber) {
         try {
-            String encodedFoodName = URLEncoder.encode(foodName, StandardCharsets.UTF_8);
             HttpRequest request = HttpRequest.newBuilder()
                     .uri(URI.create(ApiConfig.deleteTableUrl() + tableNumber))
                     .header("Content-Type", "application/json")

@@ -32,7 +32,7 @@ public class TableController {
     @FXML
     private void saveTable() {
         try {
-            Table table = new Table(java.lang.Integer.parseInt(numberField.getText()), java.lang.Integer.parseInt(floorField.getText()), seatsBox.getValue());
+            Table table = new Table(java.lang.Integer.parseInt(numberField.getText()), java.lang.Integer.parseInt(floorField.getText()), seatsBox.getValue(), false);
             AppExecutor.getExecutor().submit(() -> {
                     APIResponse response = AppConfig.getInstance().getAdminService().saveTable(table);
                     Platform.runLater(() -> {
