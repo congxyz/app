@@ -14,9 +14,9 @@
             fx:controller="com.xyzfood.Render.controllers.admin.TableManagementController">
     <left><fx:include source="../components/sidebar.fxml"/></left>
     <top>
-        </HBox>
+        <HBox>
             <Region HBox.hgrow="ALWAYS"/>
-            <Button text="Thêm bàn mới" onAction="addTable" styleClass="primary-button">
+            <Button text="Thêm bàn mới" onAction="#addTable" styleClass="primary-button">
                 <graphic><FontIcon iconColor="white" iconLiteral="fas-plus" iconSize="16"/></graphic>
             </Button>
         </HBox>

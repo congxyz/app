@@ -34,6 +34,7 @@ public class AdminController {
     }
     @PostMapping("/tables/save")
     public APIResponse saveTable(@RequestBody TableRequest request) {
+        System.out.println("VÀO CONTROLLER");
         return adminService.saveTable(request);
     }
     

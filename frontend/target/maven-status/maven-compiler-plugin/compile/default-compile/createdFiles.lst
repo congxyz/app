@@ -8,6 +8,7 @@ com\xyzfood\Render\models\Reservation.class
 com\xyzfood\Render\controllers\components\SidebarController.class
 com\xyzfood\Render\controllers\admin\FoodController.class
 com\xyzfood\Render\config\ApiConfig.class
+com\xyzfood\Render\controllers\admin\TableController.class
 com\xyzfood\Render\services\ApiService.class
 com\xyzfood\Render\controllers\components\UserNavbarController.class
 com\xyzfood\Render\dto\Request\ReservationRequest.class

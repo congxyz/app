@@ -6,6 +6,7 @@ import com.xyzfood.Render.dto.Response.APIResponse;
 import com.xyzfood.Render.models.Table;
 import com.xyzfood.Render.utils.ToastUtil;
 import com.xyzfood.Render.utils.AppExecutor;
+import com.xyzfood.Render.models.Table;
 import javafx.application.Platform;
 
 import javafx.fxml.FXML;
@@ -19,7 +20,7 @@ public class TableController {
     @FXML private Label titleLabel;
     @FXML private TextField numberField;
     @FXML private TextField floorField;
-    @FXML private ComboBox<Interger> seatsBox;
+    @FXML private ComboBox<Integer> seatsBox;
     @FXML private Button saveButton;
 
     @FXML
@@ -31,12 +32,8 @@ public class TableController {
     @FXML
     private void saveTable() {
         try {
-            Table table = new Table(Integer.parseInt(numberField.getText(), Integer.parseInt(floorField.getText()), seatsBox.getValue()));
-        } catch (NumberFormatException e) {
-            ToastUtil.show("Vui lòng nhập đúng thông tin");
-            return;
-        }
-        AppExecutor.getExecutor().submit(() -> {
+            Table table = new Table(java.lang.Integer.parseInt(numberField.getText()), java.lang.Integer.parseInt(floorField.getText()), seatsBox.getValue());
+            AppExecutor.getExecutor().submit(() -> {
                     APIResponse response = AppConfig.getInstance().getAdminService().saveTable(table);
                     Platform.runLater(() -> {
                         ToastUtil.show(response.getMessage());
@@ -45,6 +42,11 @@ public class TableController {
                         }
                     });
                 });
+        } catch (NumberFormatException e) {
+            ToastUtil.show("Vui lòng nhập đúng thông tin");
+            return;
+        }
+        
     }
 
     @FXML

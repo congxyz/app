@@ -13,6 +13,15 @@
 <BorderPane styleClass="app-root" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1"
             fx:controller="com.xyzfood.Render.controllers.admin.TableManagementController">
     <left><fx:include source="../components/sidebar.fxml"/></left>
+    <top>
+        <HBox>
+            <Region HBox.hgrow="ALWAYS"/>
+            <Button text="Thêm bàn mới" onAction="#addTable" styleClass="primary-button">
+                <graphic><FontIcon iconColor="white" iconLiteral="fas-plus" iconSize="16"/></graphic>
+            </Button>
+        </HBox>
+    </top>
+
     <center>
         <ScrollPane fitToWidth="true" styleClass="page-scroll">
             <VBox spacing="28" styleClass="page">
